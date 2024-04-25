@@ -3,9 +3,7 @@ package models;
 public class Usuario {
 	
 	private int id;
-	private int nome;
-	private int email;
-	private int telefone;
+	private String nome;
 	
 	public Usuario() { }
 	
@@ -17,27 +15,11 @@ public class Usuario {
 		this.id = id;
 	}
 	
-	public int getNome() {
+	public String getNome() {
 		return nome;
 	}
 	
-	public void setNome(int nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	
-	public int getEmail() {
-		return email;
-	}
-	
-	public void setEmail(int email) {
-		this.email = email;
-	}
-	
-	public int getTelefone() {
-		return telefone;
-	}
-	
-	public void setTelefone(int telefone) {
-		this.telefone = telefone;
 	}
 }
