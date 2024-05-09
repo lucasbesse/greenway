@@ -1,35 +1,26 @@
 package screens;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-import javax.swing.JInternalFrame;
-import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JMenuBar;
-import java.awt.Panel;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.EventQueue;
+import java.awt.Font;
 
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Home extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -38,7 +29,7 @@ public class Home extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = new Login();
+					Home frame = new Home();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +43,7 @@ public class Home extends JFrame {
 	 */
 	public Home() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 750, 700);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -60,37 +51,27 @@ public class Home extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Home");
+		JLabel lblNewLabel = new JLabel("Lucas G Bessegato");
+		lblNewLabel.setBounds(10, 24, 726, 34);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(20, 10, 416, 13);
+		Font font = new Font(lblNewLabel.getFont().getName(), Font.PLAIN, 18);
+        lblNewLabel.setFont(font);
 		contentPane.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(95, 76, 271, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel_1 = new JLabel("Nome de usuário:");
-		lblNewLabel_1.setBounds(95, 61, 271, 13);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("Senha:");
-		lblNewLabel_1_1.setBounds(95, 115, 271, 13);
-		contentPane.add(lblNewLabel_1_1);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(95, 129, 271, 19);
-		contentPane.add(passwordField);
-		
-		JLabel lblNewLabel_2 = new JLabel("Não possui cadastro?");
-		lblNewLabel_2.setBounds(95, 158, 133, 13);
-		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Cadastre-se");
-		lblNewLabel_2_1.setForeground(new Color(0, 0, 255));
-		lblNewLabel_2_1.setBounds(225, 158, 103, 13);
-		lblNewLabel_2_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Define o cursor como de mão
-		contentPane.add(lblNewLabel_2_1);
-	
+		JLabel divLike = new JLabel("2 Quizes finalizados", SwingConstants.CENTER);
+        divLike.setBounds(117, 73, 200, 30); // Ajuste as coordenadas e o tamanho conforme necessário
+        divLike.setBackground(Color.BLUE); // Define a cor de fundo como azul
+        divLike.setForeground(Color.WHITE); // Define a cor do texto como branco
+        divLike.setOpaque(true); // Necessário para tornar o fundo visível
+        divLike.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // Borda opcional
+        contentPane.add(divLike);
+        
+        JLabel divLike_1 = new JLabel("2 Quizes pendentes", SwingConstants.CENTER);
+        divLike_1.setOpaque(true);
+        divLike_1.setForeground(Color.WHITE);
+        divLike_1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        divLike_1.setBackground(Color.RED);
+        divLike_1.setBounds(407, 73, 200, 30);
+        contentPane.add(divLike_1);
 	}
 }
