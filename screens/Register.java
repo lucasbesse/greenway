@@ -24,12 +24,17 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import src.RegisterController;
+import src.DatabaseConnection;
+
 public class Register extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	
+	private RegisterController registerController;
 
 	/**
 	 * Launch the application.
@@ -51,6 +56,9 @@ public class Register extends JFrame {
 	 * Create the frame.
 	 */
 	public Register() {
+		
+		registerController = new RegisterController(new DatabaseConnection());
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setResizable(false);
@@ -85,6 +93,12 @@ public class Register extends JFrame {
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				String nome = textField.getText();
+				String senha = String.valueOf(passwordField.getPassword());
+				
+				registerController.registerNewUser(nome, senha);
+				
 			}
 		});
 		btnNewButton.setBounds(148, 176, 165, 21);
