@@ -4,42 +4,42 @@ import java.util.List;
 
 public class Dashboard {
 	
-	private Usuario usuario;
-	private List<ListaDeTarefas> listasDeTarefas;
-	private List<Quiz> quizzesCompletos;
-	private List<Quiz> quizzesParaFazer;
+	private User user;
+	private List<TaskList> tasksLists;
+	private List<Quiz> quizzesDone;
+	private List<Quiz> quizzesToDo;
 	
 	public Dashboard() { }
 
-	public Usuario getUsuario() {
-		return usuario;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public List<ListaDeTarefas> getListasDeTarefas() {
-		return listasDeTarefas;
+	public List<TaskList> getTasksLists() {
+		return tasksLists;
 	}
 
-	public void setListasDeTarefas(List<ListaDeTarefas> listasDeTarefas) {
-		this.listasDeTarefas = listasDeTarefas;
+	public void setTasksLists(List<TaskList> tasksLists) {
+		this.tasksLists = tasksLists;
 	}
 
-	public List<Quiz> getQuizzesCompletos() {
-		return quizzesCompletos;
+	public List<Quiz> getQuizzesDone() {
+		return quizzesDone;
 	}
 
-	public void setQuizzesCompletos(List<Quiz> quizzesCompletos) {
-		this.quizzesCompletos = quizzesCompletos;
+	public void setQuizzesDone(List<Quiz> quizzesDone) {
+		this.quizzesDone = quizzesDone;
 	}
 
-	public List<Quiz> getQuizzesParaFazer() {
-		return quizzesParaFazer;
+	public List<Quiz> getQuizzesToDo() {
+		return quizzesToDo;
 	}
 
-	public void setQuizzesParaFazer(List<Quiz> quizzesParaFazer) {
-		this.quizzesParaFazer = quizzesParaFazer;
+	public void setQuizzesToDo(List<Quiz> quizzesToDo) {
+		this.quizzesToDo = quizzesToDo;
 	}
 }
