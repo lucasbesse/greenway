@@ -16,8 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import models.Opcao;
-import models.Pergunta;
+import models.Option;
+import models.Question;
 import models.Quiz;
 
 import java.awt.event.ActionListener;
@@ -92,7 +92,7 @@ public class Home extends JFrame {
         List<Quiz> quizzesPendentes = new ArrayList<Quiz>();
         
         for (int i = 0; i < quizzes.size(); i++) {
-            if(quizzes.get(i).isConcluido()) {
+            if(quizzes.get(i).isDone()) {
             	quizzesRealizados.add(quizzes.get(i));
             }
             else {
@@ -142,7 +142,7 @@ public class Home extends JFrame {
         btnNewButton.setBounds(38, 122, 192, 26);
         panel.add(btnNewButton);
 
-        JLabel lblNewLabel_2 = new JLabel(quiz.getConteudo() + numero);
+        JLabel lblNewLabel_2 = new JLabel(quiz.getContent() + numero);
         lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
         lblNewLabel_2.setBounds(10, 10, 247, 13);
@@ -185,7 +185,7 @@ public class Home extends JFrame {
         });
         panel.add(btnNewButton);
 
-        JLabel lblNewLabel_2 = new JLabel(quiz.getConteudo() + numero);
+        JLabel lblNewLabel_2 = new JLabel(quiz.getContent() + numero);
         lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
         lblNewLabel_2.setBounds(10, 10, 247, 13);
@@ -210,80 +210,80 @@ public class Home extends JFrame {
 	}
 	
 	private List<Quiz> dummyQuizes() {
-		Pergunta pergunta1 = new Pergunta();
+		Question pergunta1 = new Question();
         pergunta1.setId(1);
-        pergunta1.setDescricao("Qual é a capital do Brasil?");
+        pergunta1.setDescription("Qual é a capital do Brasil?");
 
-        Pergunta pergunta2 = new Pergunta();
+        Question pergunta2 = new Question();
         pergunta2.setId(2);
-        pergunta2.setDescricao("Quem escreveu 'Dom Quixote'?");
+        pergunta2.setDescription("Quem escreveu 'Dom Quixote'?");
         
-        Opcao opcao1 = new Opcao();
+        Option opcao1 = new Option();
         opcao1.setId(1);
-        opcao1.setDescricao("Pergunta 1");
+        opcao1.setDescription("Pergunta 1");
         
-        Opcao opcao2 = new Opcao();
+        Option opcao2 = new Option();
         opcao2.setId(2);
-        opcao2.setDescricao("Pergunta 2");
+        opcao2.setDescription("Pergunta 2");
         
-        Opcao opcao3 = new Opcao();
+        Option opcao3 = new Option();
         opcao3.setId(3);
-        opcao3.setDescricao("Pergunta 3");
+        opcao3.setDescription("Pergunta 3");
         
-        List<Opcao> opcoes = new ArrayList<>();
+        List<Option> opcoes = new ArrayList<>();
         opcoes.add(opcao1);
         opcoes.add(opcao2);
         opcoes.add(opcao3);
         
-        pergunta1.setOpcoes(opcoes);
-        pergunta2.setOpcoes(opcoes);
+        pergunta1.setOptions(opcoes);
+        pergunta2.setOptions(opcoes);
         
 
         // Criando instâncias de Quiz
         Quiz quiz1 = new Quiz();
         quiz1.setId(1);
-        quiz1.setConteudo("Geografia e Literatura");
-        quiz1.setPerguntas(new ArrayList<>());
-        quiz1.getPerguntas().add(pergunta1);
-        quiz1.getPerguntas().add(pergunta2);
-        quiz1.setResultado("Você é um expert em Geografia e Literatura!");
-        quiz1.setConcluido(false);
+        quiz1.setContent("Geografia e Literatura");
+        quiz1.setQuestions(new ArrayList<>());
+        quiz1.getQuestions().add(pergunta1);
+        quiz1.getQuestions().add(pergunta2);
+        quiz1.setResult("Você é um expert em Geografia e Literatura!");
+        quiz1.setDone(false);
 
         Quiz quiz2 = new Quiz();
         quiz2.setId(2);
-        quiz2.setConteudo("Matemática");
-        quiz2.setPerguntas(new ArrayList<>());
-        quiz2.setResultado("Você é um gênio da Matemática!");
-        quiz2.setConcluido(true);
+        quiz2.setContent("Matemática");
+        quiz2.setQuestions(new ArrayList<>());
+        quiz2.setResult("Você é um gênio da Matemática!");
+        quiz2.setDone(true);
 
         Quiz quiz3 = new Quiz();
         quiz3.setId(3);
-        quiz3.setConteudo("História");
-        quiz3.setPerguntas(new ArrayList<>());
-        quiz3.getPerguntas().add(pergunta2);
-        quiz3.setResultado("Você é um mestre da História!");
-        quiz3.setConcluido(false);
+        quiz3.setContent("História");
+        quiz3.setQuestions(new ArrayList<>());
+        quiz3.getQuestions().add(pergunta2);
+        quiz3.setResult("Você é um mestre da História!");
+        quiz3.setDone(false);
 
         Quiz quiz4 = new Quiz();
         quiz4.setId(4);
-        quiz4.setConteudo("Ciências");
-        quiz4.setPerguntas(new ArrayList<>());
-        quiz4.setResultado("Você é um cientista talentoso!");
-        quiz4.setConcluido(true);
+        quiz4.setContent("Ciências");
+        quiz4.setQuestions(new ArrayList<>());
+        quiz4.setResult("Você é um cientista talentoso!");
+        quiz4.setDone(true);
 
         Quiz quiz5 = new Quiz();
         quiz5.setId(5);
-        quiz5.setConteudo("Artes");
-        quiz5.setPerguntas(new ArrayList<>());
-        quiz5.setResultado("Você é um artista de coração!");
-        quiz5.setConcluido(false);
+        quiz5.setContent("Artes");
+        quiz5.setQuestions(new ArrayList<>());
+        quiz5.setResult("Você é um artista de coração!");
+        quiz5.setDone(false);
 
         Quiz quiz6 = new Quiz();
         quiz6.setId(6);
-        quiz6.setConteudo("Esportes");
-        quiz6.setPerguntas(new ArrayList<>());
-        quiz6.setResultado("Você é um campeão dos esportes!");
-        quiz6.setConcluido(true);
+        quiz6.setContent("Esportes");
+        quiz6.setQuestions(new ArrayList<>());
+        quiz6.setResult("Você é um campeão dos esportes!");
+        quiz6.setDone(true);
 
         // Criando o ArrayList com os quizzes
         List<Quiz> quizzes = new ArrayList<>();
