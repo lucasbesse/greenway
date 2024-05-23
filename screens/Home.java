@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import models.Opcao;
 import models.Pergunta;
 import models.Quiz;
 
@@ -172,10 +173,16 @@ public class Home extends JFrame {
         panel.setBackground(new Color(198, 198, 255));
         contentPane.add(panel);
 
-        JButton btnNewButton = new JButton("Ver resultado");
+        JButton btnNewButton = new JButton("Iniciar Quiz");
         btnNewButton.setForeground(new Color(0, 0, 0));
         btnNewButton.setBackground(new Color(243, 243, 255));
         btnNewButton.setBounds(38, 122, 192, 26);
+        btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Define o cursor como de mão
+        btnNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                openQuiz(quiz);
+            }
+        });
         panel.add(btnNewButton);
 
         JLabel lblNewLabel_2 = new JLabel(quiz.getConteudo() + numero);
@@ -196,6 +203,12 @@ public class Home extends JFrame {
         panel.add(textArea);
     }
 	
+	private void openQuiz(Quiz quiz_reference) {
+		QuizScreen quiz = new QuizScreen(quiz_reference); // Cria uma nova instância da tela de registro
+		quiz.setVisible(true); 
+		dispose();
+	}
+	
 	private List<Quiz> dummyQuizes() {
 		Pergunta pergunta1 = new Pergunta();
         pergunta1.setId(1);
@@ -204,6 +217,27 @@ public class Home extends JFrame {
         Pergunta pergunta2 = new Pergunta();
         pergunta2.setId(2);
         pergunta2.setDescricao("Quem escreveu 'Dom Quixote'?");
+        
+        Opcao opcao1 = new Opcao();
+        opcao1.setId(1);
+        opcao1.setDescricao("Pergunta 1");
+        
+        Opcao opcao2 = new Opcao();
+        opcao2.setId(2);
+        opcao2.setDescricao("Pergunta 2");
+        
+        Opcao opcao3 = new Opcao();
+        opcao3.setId(3);
+        opcao3.setDescricao("Pergunta 3");
+        
+        List<Opcao> opcoes = new ArrayList<>();
+        opcoes.add(opcao1);
+        opcoes.add(opcao2);
+        opcoes.add(opcao3);
+        
+        pergunta1.setOpcoes(opcoes);
+        pergunta2.setOpcoes(opcoes);
+        
 
         // Criando instâncias de Quiz
         Quiz quiz1 = new Quiz();
@@ -226,6 +260,7 @@ public class Home extends JFrame {
         quiz3.setId(3);
         quiz3.setConteudo("História");
         quiz3.setPerguntas(new ArrayList<>());
+        quiz3.getPerguntas().add(pergunta2);
         quiz3.setResultado("Você é um mestre da História!");
         quiz3.setConcluido(false);
 
