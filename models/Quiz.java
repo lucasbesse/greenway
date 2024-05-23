@@ -5,11 +5,11 @@ import java.util.List;
 public class Quiz {
 
 	private int id;
-	private String conteudo;
-	private List<Pergunta> perguntas;
-	private String resultado;
-	private ListaDeTarefas listaDeTarefas;
-	private boolean concluido;
+	private String content;
+	private List<Question> questions;
+	private String result;
+	private TaskList taskList;
+	private boolean done;
 	
 	public Quiz() { }
 
@@ -21,43 +21,43 @@ public class Quiz {
 		this.id = id;
 	}
 
-	public String getConteudo() {
-		return conteudo;
+	public String getContent() {
+		return content;
 	}
 
-	public void setConteudo(String conteudo) {
-		this.conteudo = conteudo;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public List<Pergunta> getPerguntas() {
-		return perguntas;
+	public List<Question> getQuestions() {
+		return questions;
 	}
 
-	public void setPerguntas(List<Pergunta> perguntas) {
-		this.perguntas = perguntas;
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
 	}
 
-	public String getResultado() {
-		return resultado;
+	public String getResult() {
+		return result;
 	}
 
-	public void setResultado(String resultado) {
-		this.resultado = resultado;
+	public void setResult(String result) {
+		this.result = result;
 	}
 
-	public ListaDeTarefas getListaDeTarefas() {
-		return listaDeTarefas;
+	public TaskList getTaskList() {
+		return taskList;
 	}
 
-	public void setListaDeTarefas(ListaDeTarefas listaDeTarefas) {
-		this.listaDeTarefas = listaDeTarefas;
+	public void setTaskList(TaskList taskList) {
+		this.taskList = taskList;
 	}
 
-	public boolean isConcluido() {
-		return concluido;
+	public boolean isDone() {
+		return done;
 	}
 
-	public void setConcluido(boolean concluido) {
-		this.concluido = concluido;
+	public void setDone(boolean done) {
+		this.done = done;
 	}
 }

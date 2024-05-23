@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controllers.RegisterController;
+import database.DatabaseConnection;
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -23,9 +27,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import src.RegisterController;
-import src.DatabaseConnection;
 
 public class Register extends JFrame {
 
@@ -56,9 +57,6 @@ public class Register extends JFrame {
 	 * Create the frame.
 	 */
 	public Register() {
-		
-		registerController = new RegisterController(new DatabaseConnection());
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setResizable(false);
@@ -91,16 +89,20 @@ public class Register extends JFrame {
 		contentPane.add(passwordField);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String nome = textField.getText();
-				String senha = String.valueOf(passwordField.getPassword());
+				registerController = new RegisterController();
 				
-				registerController.registerNewUser(nome, senha);
+				String name = textField.getText();
+				String password = String.valueOf(passwordField.getPassword());
+				
+				registerController.registerUser(name, password);
 				
 			}
 		});
+		
 		btnNewButton.setBounds(148, 176, 165, 21);
 		contentPane.add(btnNewButton);
 	}
