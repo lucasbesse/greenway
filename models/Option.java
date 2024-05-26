@@ -4,6 +4,8 @@ public class Option {
 
 	private int id;
 	private String description;
+	
+	// vai ser necessário?
 	private String type;
 	
 	public Option() { }

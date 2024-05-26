@@ -1,5 +1,8 @@
 package dao.interfaces;
 
+import models.User;
+
 public interface IUserDAO {
-	public void createUser(String name, String password);
+	public boolean createUser(String name, String password);
+	public User authenticate(String name, String password);
 }

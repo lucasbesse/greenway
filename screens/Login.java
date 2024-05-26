@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controllers.UserController;
+import models.User;
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -100,11 +104,38 @@ public class Login extends JFrame {
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.setBounds(147, 203, 165, 21);
 		contentPane.add(btnNewButton);
+		btnNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            	String name = textField.getText();
+				String password = String.valueOf(passwordField.getPassword());
+				authenticate(name, password);
+            }
+        });
+		
 	}
 	
 	private void openRegisterScreen() {
 		Register register = new Register(); // Cria uma nova instância da tela de registro
 		register.setVisible(true); // Exibe a tela de registro
 		dispose(); // Fecha a tela de login
+	}
+	
+	private void authenticate(String name, String password) {
+		UserController userController = new UserController();
+		User user = userController.authenticate(name, password);
+		if (user != null) {
+			this.openHomeScreen();
+			return;
+		}
+		
+		// TODO: informar na tela que os dados estão incorretos
+	}
+	
+	private void openHomeScreen() {
+		// TODO: passar usuario para tela home
+		
+		Home home = new Home(); 
+		home.setVisible(true);
+		dispose();
 	}
 }

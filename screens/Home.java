@@ -238,6 +238,7 @@ public class Home extends JFrame {
         pergunta1.setOptions(opcoes);
         pergunta2.setOptions(opcoes);
         
+        pergunta2.setDescription("Quem escreveu 'Dom Quixote'?");
 
         // Criando instâncias de Quiz
         Quiz quiz1 = new Quiz();
@@ -261,6 +262,10 @@ public class Home extends JFrame {
         quiz3.setContent("História");
         quiz3.setQuestions(new ArrayList<>());
         quiz3.getQuestions().add(pergunta2);
+        quiz3.setResult("Você é um mestre da História!");
+        quiz3.setDone(false);
+        quiz3.setContent("História");
+        quiz3.setQuestions(new ArrayList<>());
         quiz3.setResult("Você é um mestre da História!");
         quiz3.setDone(false);
 

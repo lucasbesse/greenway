@@ -6,8 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controllers.RegisterController;
-import database.DatabaseConnection;
+import controllers.UserController;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -34,8 +33,6 @@ public class Register extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
-	
-	private RegisterController registerController;
 
 	/**
 	 * Launch the application.
@@ -92,19 +89,30 @@ public class Register extends JFrame {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				registerController = new RegisterController();
-				
 				String name = textField.getText();
 				String password = String.valueOf(passwordField.getPassword());
-				
-				registerController.registerUser(name, password);
-				
+				registerUser(name, password);
 			}
 		});
 		
 		btnNewButton.setBounds(148, 176, 165, 21);
 		contentPane.add(btnNewButton);
+	}
+	
+	private void registerUser(String name, String password) {
+		UserController userController = new UserController();
+		if (userController.registerUser(name, password)) {
+			this.openLoginScreen();
+			return;
+		}
+		
+		// TODO: informar na tela que o nome ja existe
+	}
+
+	private void openLoginScreen() {
+		Login login = new Login(); 
+		login.setVisible(true);
+		dispose();
 	}
 
 }
