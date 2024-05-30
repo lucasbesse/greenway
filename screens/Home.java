@@ -22,6 +22,7 @@ import models.Quiz;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
@@ -210,95 +211,266 @@ public class Home extends JFrame {
 	}
 	
 	private List<Quiz> dummyQuizes() {
-		Question pergunta1 = new Question();
-        pergunta1.setId(1);
-        pergunta1.setDescription("Qual é a capital do Brasil?");
+	    // Perguntas e opções para o Quiz 1
+	    Question pergunta1Quiz1 = new Question();
+	    pergunta1Quiz1.setId(1);
+	    pergunta1Quiz1.setDescription("Qual é a capital do Brasil?");
+	    Option opcao1Quiz1 = new Option();
+	    opcao1Quiz1.setId(1);
+	    opcao1Quiz1.setDescription("Brasília");
+	    opcao1Quiz1.setType("A");
+	    Option opcao2Quiz1 = new Option();
+	    opcao2Quiz1.setId(2);
+	    opcao2Quiz1.setDescription("Rio de Janeiro");
+	    opcao2Quiz1.setType("B");
+	    Option opcao3Quiz1 = new Option();
+	    opcao3Quiz1.setId(3);
+	    opcao3Quiz1.setDescription("São Paulo");
+	    opcao3Quiz1.setType("C");
+	    pergunta1Quiz1.setOptions(Arrays.asList(opcao1Quiz1, opcao2Quiz1, opcao3Quiz1));
 
-        Question pergunta2 = new Question();
-        pergunta2.setId(2);
-        pergunta2.setDescription("Quem escreveu 'Dom Quixote'?");
-        
-        Option opcao1 = new Option();
-        opcao1.setId(1);
-        opcao1.setDescription("Pergunta 1");
-        
-        Option opcao2 = new Option();
-        opcao2.setId(2);
-        opcao2.setDescription("Pergunta 2");
-        
-        Option opcao3 = new Option();
-        opcao3.setId(3);
-        opcao3.setDescription("Pergunta 3");
-        
-        List<Option> opcoes = new ArrayList<>();
-        opcoes.add(opcao1);
-        opcoes.add(opcao2);
-        opcoes.add(opcao3);
-        
-        pergunta1.setOptions(opcoes);
-        pergunta2.setOptions(opcoes);
-        
-        pergunta2.setDescription("Quem escreveu 'Dom Quixote'?");
+	    Question pergunta2Quiz1 = new Question();
+	    pergunta2Quiz1.setId(2);
+	    pergunta2Quiz1.setDescription("Qual é a língua oficial do Brasil?");
+	    Option opcao1Q2Quiz1 = new Option();
+	    opcao1Q2Quiz1.setId(1);
+	    opcao1Q2Quiz1.setDescription("Português");
+	    opcao1Q2Quiz1.setType("A");
+	    Option opcao2Q2Quiz1 = new Option();
+	    opcao2Q2Quiz1.setId(2);
+	    opcao2Q2Quiz1.setDescription("Espanhol");
+	    opcao2Q2Quiz1.setType("B");
+	    Option opcao3Q2Quiz1 = new Option();
+	    opcao3Q2Quiz1.setId(3);
+	    opcao3Q2Quiz1.setDescription("Inglês");
+	    opcao3Q2Quiz1.setType("C");
+	    pergunta2Quiz1.setOptions(Arrays.asList(opcao1Q2Quiz1, opcao2Q2Quiz1, opcao3Q2Quiz1));
 
-        // Criando instâncias de Quiz
-        Quiz quiz1 = new Quiz();
-        quiz1.setId(1);
-        quiz1.setContent("Geografia e Literatura");
-        quiz1.setQuestions(new ArrayList<>());
-        quiz1.getQuestions().add(pergunta1);
-        quiz1.getQuestions().add(pergunta2);
-        quiz1.setResult("Você é um expert em Geografia e Literatura!");
-        quiz1.setDone(false);
+	    // Quiz 1
+	    Quiz quiz1 = new Quiz();
+	    quiz1.setId(1);
+	    quiz1.setContent("Geografia do Brasil");
+	    quiz1.setQuestions(Arrays.asList(pergunta1Quiz1, pergunta2Quiz1));
+	    quiz1.setResult("Você é um expert em Geografia do Brasil!");
+	    quiz1.setDone(false);
 
-        Quiz quiz2 = new Quiz();
-        quiz2.setId(2);
-        quiz2.setContent("Matemática");
-        quiz2.setQuestions(new ArrayList<>());
-        quiz2.setResult("Você é um gênio da Matemática!");
-        quiz2.setDone(true);
+	    // Perguntas e opções para o Quiz 2
+	    Question pergunta1Quiz2 = new Question();
+	    pergunta1Quiz2.setId(3);
+	    pergunta1Quiz2.setDescription("Quem escreveu 'Dom Quixote'?");
+	    Option opcao1Quiz2 = new Option();
+	    opcao1Quiz2.setId(4);
+	    opcao1Quiz2.setDescription("Miguel de Cervantes");
+	    opcao1Quiz2.setType("A");
+	    Option opcao2Quiz2 = new Option();
+	    opcao2Quiz2.setId(5);
+	    opcao2Quiz2.setDescription("William Shakespeare");
+	    opcao2Quiz2.setType("B");
+	    Option opcao3Quiz2 = new Option();
+	    opcao3Quiz2.setId(6);
+	    opcao3Quiz2.setDescription("Gabriel García Márquez");
+	    opcao3Quiz2.setType("C");
+	    pergunta1Quiz2.setOptions(Arrays.asList(opcao1Quiz2, opcao2Quiz2, opcao3Quiz2));
 
-        Quiz quiz3 = new Quiz();
-        quiz3.setId(3);
-        quiz3.setContent("História");
-        quiz3.setQuestions(new ArrayList<>());
-        quiz3.getQuestions().add(pergunta2);
-        quiz3.setResult("Você é um mestre da História!");
-        quiz3.setDone(false);
-        quiz3.setContent("História");
-        quiz3.setQuestions(new ArrayList<>());
-        quiz3.setResult("Você é um mestre da História!");
-        quiz3.setDone(false);
+	    Question pergunta2Quiz2 = new Question();
+	    pergunta2Quiz2.setId(4);
+	    pergunta2Quiz2.setDescription("Em que ano foi publicada a primeira parte de 'Dom Quixote'?");
+	    Option opcao1Q2Quiz2 = new Option();
+	    opcao1Q2Quiz2.setId(7);
+	    opcao1Q2Quiz2.setDescription("1605");
+	    opcao1Q2Quiz2.setType("A");
+	    Option opcao2Q2Quiz2 = new Option();
+	    opcao2Q2Quiz2.setId(8);
+	    opcao2Q2Quiz2.setDescription("1615");
+	    opcao2Q2Quiz2.setType("B");
+	    Option opcao3Q2Quiz2 = new Option();
+	    opcao3Q2Quiz2.setId(9);
+	    opcao3Q2Quiz2.setDescription("1620");
+	    opcao3Q2Quiz2.setType("C");
+	    pergunta2Quiz2.setOptions(Arrays.asList(opcao1Q2Quiz2, opcao2Q2Quiz2, opcao3Q2Quiz2));
 
-        Quiz quiz4 = new Quiz();
-        quiz4.setId(4);
-        quiz4.setContent("Ciências");
-        quiz4.setQuestions(new ArrayList<>());
-        quiz4.setResult("Você é um cientista talentoso!");
-        quiz4.setDone(true);
+	    // Quiz 2
+	    Quiz quiz2 = new Quiz();
+	    quiz2.setId(2);
+	    quiz2.setContent("Literatura Clássica");
+	    quiz2.setQuestions(Arrays.asList(pergunta1Quiz2, pergunta2Quiz2));
+	    quiz2.setResult("Você é um expert em Literatura Clássica!");
+	    quiz2.setDone(true);
 
-        Quiz quiz5 = new Quiz();
-        quiz5.setId(5);
-        quiz5.setContent("Artes");
-        quiz5.setQuestions(new ArrayList<>());
-        quiz5.setResult("Você é um artista de coração!");
-        quiz5.setDone(false);
+	    // Perguntas e opções para o Quiz 3
+	    Question pergunta1Quiz3 = new Question();
+	    pergunta1Quiz3.setId(5);
+	    pergunta1Quiz3.setDescription("Qual é a fórmula química da água?");
+	    Option opcao1Quiz3 = new Option();
+	    opcao1Quiz3.setId(10);
+	    opcao1Quiz3.setDescription("H2O");
+	    opcao1Quiz3.setType("A");
+	    Option opcao2Quiz3 = new Option();
+	    opcao2Quiz3.setId(11);
+	    opcao2Quiz3.setDescription("CO2");
+	    opcao2Quiz3.setType("B");
+	    Option opcao3Quiz3 = new Option();
+	    opcao3Quiz3.setId(12);
+	    opcao3Quiz3.setDescription("O2");
+	    opcao3Quiz3.setType("C");
+	    pergunta1Quiz3.setOptions(Arrays.asList(opcao1Quiz3, opcao2Quiz3, opcao3Quiz3));
 
-        Quiz quiz6 = new Quiz();
-        quiz6.setId(6);
-        quiz6.setContent("Esportes");
-        quiz6.setQuestions(new ArrayList<>());
-        quiz6.setResult("Você é um campeão dos esportes!");
-        quiz6.setDone(true);
+	    Question pergunta2Quiz3 = new Question();
+	    pergunta2Quiz3.setId(6);
+	    pergunta2Quiz3.setDescription("Qual é a unidade básica da vida?");
+	    Option opcao1Q2Quiz3 = new Option();
+	    opcao1Q2Quiz3.setId(13);
+	    opcao1Q2Quiz3.setDescription("Célula");
+	    opcao1Q2Quiz3.setType("A");
+	    Option opcao2Q2Quiz3 = new Option();
+	    opcao2Q2Quiz3.setId(14);
+	    opcao2Q2Quiz3.setDescription("Átomo");
+	    opcao2Q2Quiz3.setType("B");
+	    Option opcao3Q2Quiz3 = new Option();
+	    opcao3Q2Quiz3.setId(15);
+	    opcao3Q2Quiz3.setDescription("Molécula");
+	    opcao3Q2Quiz3.setType("C");
+	    pergunta2Quiz3.setOptions(Arrays.asList(opcao1Q2Quiz3, opcao2Q2Quiz3, opcao3Q2Quiz3));
 
-        // Criando o ArrayList com os quizzes
-        List<Quiz> quizzes = new ArrayList<>();
-        quizzes.add(quiz1);
-        quizzes.add(quiz2);
-        quizzes.add(quiz3);
-        quizzes.add(quiz4);
-        quizzes.add(quiz5);
-        quizzes.add(quiz6);
-        
-        return quizzes;
+	    // Quiz 3
+	    Quiz quiz3 = new Quiz();
+	    quiz3.setId(3);
+	    quiz3.setContent("Ciências Naturais");
+	    quiz3.setQuestions(Arrays.asList(pergunta1Quiz3, pergunta2Quiz3));
+	    quiz3.setResult("Você é um expert em Ciências Naturais!");
+	    quiz3.setDone(false);
+
+	    // Perguntas e opções para o Quiz 4
+	    Question pergunta1Quiz4 = new Question();
+	    pergunta1Quiz4.setId(7);
+	    pergunta1Quiz4.setDescription("Em que ano começou a Segunda Guerra Mundial?");
+	    Option opcao1Quiz4 = new Option();
+	    opcao1Quiz4.setId(16);
+	    opcao1Quiz4.setDescription("1939");
+	    opcao1Quiz4.setType("A");
+	    Option opcao2Quiz4 = new Option();
+	    opcao2Quiz4.setId(17);
+	    opcao2Quiz4.setDescription("1941");
+	    opcao2Quiz4.setType("B");
+	    Option opcao3Quiz4 = new Option();
+	    opcao3Quiz4.setId(18);
+	    opcao3Quiz4.setDescription("1945");
+	    opcao3Quiz4.setType("C");
+	    pergunta1Quiz4.setOptions(Arrays.asList(opcao1Quiz4, opcao2Quiz4, opcao3Quiz4));
+
+	    Question pergunta2Quiz4 = new Question();
+	    pergunta2Quiz4.setId(8);
+	    pergunta2Quiz4.setDescription("Quem foi o primeiro presidente dos Estados Unidos?");
+	    Option opcao1Q2Quiz4 = new Option();
+	    opcao1Q2Quiz4.setId(19);
+	    opcao1Q2Quiz4.setDescription("George Washington");
+	    opcao1Q2Quiz4.setType("A");
+	    Option opcao2Q2Quiz4 = new Option();
+	    opcao2Q2Quiz4.setId(20);
+	    opcao2Q2Quiz4.setDescription("Thomas Jefferson");
+	    opcao2Q2Quiz4.setType("B");
+	    Option opcao3Q2Quiz4 = new Option();
+	    opcao3Q2Quiz4.setId(21);
+	    opcao3Q2Quiz4.setDescription("Abraham Lincoln");
+	    opcao3Q2Quiz4.setType("C");
+	    pergunta2Quiz4.setOptions(Arrays.asList(opcao1Q2Quiz4, opcao2Q2Quiz4,opcao3Q2Quiz4));
+	    
+	    Quiz quiz4 = new Quiz();
+	    quiz4.setId(4);
+	    quiz4.setContent("História Mundial");
+	    quiz4.setQuestions(Arrays.asList(pergunta1Quiz4, pergunta2Quiz4));
+	    quiz4.setResult("Você é um expert em História Mundial!");
+	    quiz4.setDone(true);
+
+	    // Perguntas e opções para o Quiz 5
+	    Question pergunta1Quiz5 = new Question();
+	    pergunta1Quiz5.setId(9);
+	    pergunta1Quiz5.setDescription("Qual é o maior planeta do Sistema Solar?");
+	    Option opcao1Quiz5 = new Option();
+	    opcao1Quiz5.setId(22);
+	    opcao1Quiz5.setDescription("Júpiter");
+	    opcao1Quiz5.setType("A");
+	    Option opcao2Quiz5 = new Option();
+	    opcao2Quiz5.setId(23);
+	    opcao2Quiz5.setDescription("Saturno");
+	    opcao2Quiz5.setType("B");
+	    Option opcao3Quiz5 = new Option();
+	    opcao3Quiz5.setId(24);
+	    opcao3Quiz5.setDescription("Netuno");
+	    opcao3Quiz5.setType("C");
+	    pergunta1Quiz5.setOptions(Arrays.asList(opcao1Quiz5, opcao2Quiz5, opcao3Quiz5));
+
+	    Question pergunta2Quiz5 = new Question();
+	    pergunta2Quiz5.setId(10);
+	    pergunta2Quiz5.setDescription("Qual é o elemento químico mais abundante no universo?");
+	    Option opcao1Q2Quiz5 = new Option();
+	    opcao1Q2Quiz5.setId(25);
+	    opcao1Q2Quiz5.setDescription("Hidrogênio");
+	    opcao1Q2Quiz5.setType("A");
+	    Option opcao2Q2Quiz5 = new Option();
+	    opcao2Q2Quiz5.setId(26);
+	    opcao2Q2Quiz5.setDescription("Oxigênio");
+	    opcao2Q2Quiz5.setType("B");
+	    Option opcao3Q2Quiz5 = new Option();
+	    opcao3Q2Quiz5.setId(27);
+	    opcao3Q2Quiz5.setDescription("Carbono");
+	    opcao3Q2Quiz5.setType("C");
+	    pergunta2Quiz5.setOptions(Arrays.asList(opcao1Q2Quiz5, opcao2Q2Quiz5, opcao3Q2Quiz5));
+
+	    // Quiz 5
+	    Quiz quiz5 = new Quiz();
+	    quiz5.setId(5);
+	    quiz5.setContent("Ciências Astronômicas");
+	    quiz5.setQuestions(Arrays.asList(pergunta1Quiz5, pergunta2Quiz5));
+	    quiz5.setResult("Você é um expert em Ciências Astronômicas!");
+	    quiz5.setDone(false);
+
+	    // Perguntas e opções para o Quiz 6
+	    Question pergunta1Quiz6 = new Question();
+	    pergunta1Quiz6.setId(11);
+	    pergunta1Quiz6.setDescription("Qual é o maior órgão do corpo humano?");
+	    Option opcao1Quiz6 = new Option();
+	    opcao1Quiz6.setId(28);
+	    opcao1Quiz6.setDescription("Pele");
+	    opcao1Quiz6.setType("A");
+	    Option opcao2Quiz6 = new Option();
+	    opcao2Quiz6.setId(29);
+	    opcao2Quiz6.setDescription("Fígado");
+	    opcao2Quiz6.setType("B");
+	    Option opcao3Quiz6 = new Option();
+	    opcao3Quiz6.setId(30);
+	    opcao3Quiz6.setDescription("Coração");
+	    opcao3Quiz6.setType("C");
+	    pergunta1Quiz6.setOptions(Arrays.asList(opcao1Quiz6, opcao2Quiz6, opcao3Quiz6));
+
+	    Question pergunta2Quiz6 = new Question();
+	    pergunta2Quiz6.setId(12);
+	    pergunta2Quiz6.setDescription("Qual é o maior osso do corpo humano?");
+	    Option opcao1Q2Quiz6 = new Option();
+	    opcao1Q2Quiz6.setId(31);
+	    opcao1Q2Quiz6.setDescription("Fêmur");
+	    opcao1Q2Quiz6.setType("A");
+	    Option opcao2Q2Quiz6 = new Option();
+	    opcao2Q2Quiz6.setId(32);
+	    opcao2Q2Quiz6.setDescription("Tíbia");
+	    opcao2Q2Quiz6.setType("B");
+	    Option opcao3Q2Quiz6 = new Option();
+	    opcao3Q2Quiz6.setId(33);
+	    opcao3Q2Quiz6.setDescription("Fíbula");
+	    opcao3Q2Quiz6.setType("C");
+	    pergunta2Quiz6.setOptions(Arrays.asList(opcao1Q2Quiz6, opcao2Q2Quiz6, opcao3Q2Quiz6));
+
+	    // Quiz 6
+	    Quiz quiz6 = new Quiz();
+	    quiz6.setId(6);
+	    quiz6.setContent("Anatomia Humana");
+	    quiz6.setQuestions(Arrays.asList(pergunta1Quiz6, pergunta2Quiz6));
+	    quiz6.setResult("Você é um expert em Anatomia Humana!");
+	    quiz6.setDone(true);
+
+	    // Retornando a lista de quizzes
+	    return Arrays.asList(quiz1, quiz2, quiz3, quiz4, quiz5, quiz6);
 	}
-}
+
+	
+	}
