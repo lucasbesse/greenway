@@ -48,7 +48,7 @@ public class Home extends JFrame {
     public Home() {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 1000, 700);
+        setBounds(100, 100, 1497, 700);
         setResizable(true);
         contentPane = new JPanel();
         contentPane.setToolTipText("true");
@@ -82,7 +82,10 @@ public class Home extends JFrame {
 
         List<Quiz> quizzes = new ArrayList<>();
         quizzes.add(DummyQuizes.createQuiz(1));
-        quizzes.add(DummyQuizes.createQuiz(1));// Adiciona o quiz criado com ID 1
+        quizzes.add(DummyQuizes.createQuiz(2));
+        quizzes.add(DummyQuizes.createQuiz(3));
+        quizzes.add(DummyQuizes.createQuiz(4));
+        quizzes.add(DummyQuizes.createQuiz(5));
         // Adicione outros quizzes conforme necessário
 
         // Verificar o estado dos quizzes adicionados
@@ -101,7 +104,7 @@ public class Home extends JFrame {
             }
         }
 
-        // Verificar o conteúdo das listas após a divisão
+
         System.out.println("Quizzes Realizados: " + quizzesRealizados.size());
         System.out.println("Quizzes Pendentes: " + quizzesPendentes.size());
 
@@ -122,6 +125,7 @@ public class Home extends JFrame {
         contentPane.add(lblNewLabel_1);
 
         for (int i = 0; i < quizzesPendentes.size(); i++) {
+        	System.out.println(i);
             criarPainelQuizPendente(i, quizzesPendentes.get(i));
         }
     }
@@ -130,18 +134,25 @@ public class Home extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setForeground(new Color(255, 255, 255));
+        
+        int colunas = 5; // Número de colunas desejado
+        int larguraPainel = 267; // Largura do painel
+        int alturaPainel = 158; // Altura do painel
+        int margemX = 25; // Margem horizontal entre os painéis
+        int margemY = 20; // Margem vertical entre os painéis
+        int y = margemY + (numero / colunas) * (alturaPainel + margemY) + 400;
+        
+        int x = margemX + (numero % colunas) * (larguraPainel + margemX);
 
-        // Define a posição e tamanho do painel com base no número
-        int x = 345 + ((numero - 1) % 3) * 307;
-        int y = 420 + ((numero - 1) / 3) * 260;
         panel.setBounds(x, y, 267, 158);
         panel.setBackground(new Color(198, 198, 255));
         contentPane.add(panel);
 
-        JButton btnNewButton = new JButton("Ver resultado");
+        JButton btnNewButton = new JButton("Ver Resultado");
         btnNewButton.setForeground(new Color(0, 0, 0));
         btnNewButton.setBackground(new Color(243, 243, 255));
         btnNewButton.setBounds(38, 122, 192, 26);
+        btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Define o cursor como de mão
         btnNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 openQuiz(quiz);
@@ -149,21 +160,19 @@ public class Home extends JFrame {
         });
         panel.add(btnNewButton);
 
-        JLabel lblNewLabel_2 = new JLabel(quiz.getContent() + numero);
+        JLabel lblNewLabel_2 = new JLabel(quiz.getContent());
         lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
         lblNewLabel_2.setBounds(10, 10, 247, 13);
         panel.add(lblNewLabel_2);
 
-        JTextArea textArea = new JTextArea("is simply dummy text of the printing and typesetting industry. " +
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, " +
-                "when an unknown printer took a galley of type and scrambled");
+        JTextArea textArea = new JTextArea(quiz.getResume());
         textArea.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
         textArea.setWrapStyleWord(true); // Quebra apenas em espaços
         textArea.setBounds(22, 33, 220, 79);
         textArea.setEditable(false); // Impede que o usuário edite o texto
-        textArea.setOpaque(false); // Deixa o fundo do JTextArea transparente
+        textArea.setBackground(new Color(198, 198, 255));
         panel.add(textArea);
     }
 
@@ -171,10 +180,16 @@ public class Home extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setForeground(new Color(255, 255, 255));
+        
+        int colunas = 5; // Número de colunas desejado
+        int larguraPainel = 267; // Largura do painel
+        int alturaPainel = 158; // Altura do painel
+        int margemX = 25; // Margem horizontal entre os painéis
+        int margemY = 20; // Margem vertical entre os painéis
+        int y = margemY + (numero / colunas) * (alturaPainel + margemY) + 140;
+        
+        int x = margemX + (numero % colunas) * (larguraPainel + margemX);
 
-        // Define a posição e tamanho do painel com base no número
-        int x = 345 + ((numero - 1) % 3) * 307;
-        int y = 157 + ((numero - 1) / 3) * 260;
         panel.setBounds(x, y, 267, 158);
         panel.setBackground(new Color(198, 198, 255));
         contentPane.add(panel);
@@ -191,15 +206,13 @@ public class Home extends JFrame {
         });
         panel.add(btnNewButton);
 
-        JLabel lblNewLabel_2 = new JLabel(quiz.getContent() + numero);
+        JLabel lblNewLabel_2 = new JLabel(quiz.getContent());
         lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
         lblNewLabel_2.setBounds(10, 10, 247, 13);
         panel.add(lblNewLabel_2);
 
-        JTextArea textArea = new JTextArea("is simply dummy text of the printing and typesetting industry. " +
-                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, " +
-                "when an unknown printer took a galley of type and scrambled");
+        JTextArea textArea = new JTextArea(quiz.getResume());
         textArea.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
         textArea.setWrapStyleWord(true); // Quebra apenas em espaços

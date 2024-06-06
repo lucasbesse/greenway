@@ -8,6 +8,7 @@ public class Quiz {
 	private String content;
 	private List<Question> questions;
 	private String result;
+	private String resume;
 	private String result_text_a;
 	private String result_text_b;
 	private String result_text_c;
@@ -46,6 +47,14 @@ public class Quiz {
 
 	public void setResult(String result) {
 		this.result = result;
+	}
+	
+	public String getResume() {
+		return resume;
+	}
+
+	public void setResume(String resume) {
+		this.resume = resume;
 	}
 
 	public TaskList getTaskList() {
