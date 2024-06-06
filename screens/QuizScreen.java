@@ -17,6 +17,8 @@ import models.Quiz;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -29,6 +31,9 @@ public class QuizScreen extends JFrame {
     private int current_question = 0;
     private ButtonGroup group; // Declaração do ButtonGroup a nível de classe
     private Map<JRadioButton, Option> radioButtonOptionMap; // Mapa para associar JRadioButton a Option
+    public int typeA_count = 0;
+    public int typeB_count = 0;
+    public int typeC_count = 0;
 
     /**
      * Launch the application.
@@ -121,6 +126,15 @@ public class QuizScreen extends JFrame {
         Option selectedOption = getSelectedOption(radioButtons);
         if (selectedOption != null) {
             System.out.println("Opção selecionada: " + selectedOption.getDescription() + " (Type: " + selectedOption.getType() + ")");
+            if(selectedOption.getType() == "A") {
+            	this.typeA_count++;
+            }
+            else if(selectedOption.getType() == "B") {
+            	this.typeB_count++;
+            }
+            if(selectedOption.getType() == "C") {
+            	this.typeC_count++;
+            }
             this.current_question = this.current_question + 1;
             List<Question> Questions = this.current_quiz.getQuestions();
             contentPane.removeAll();
@@ -138,6 +152,42 @@ public class QuizScreen extends JFrame {
                 contentPane.revalidate();
                 contentPane.repaint();
                 JLabel lblEnd = new JLabel("Fim do quiz!");
+                
+                if (this.typeA_count >= this.typeB_count && this.typeA_count >= this.typeC_count) {
+                	JTextArea textArea = new JTextArea(this.current_quiz.getResultText("A"));
+                    textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+                    textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
+                    textArea.setWrapStyleWord(true); // Quebra apenas em espaços
+                    textArea.setBounds(57, 105, 938, 300);
+                    textArea.setEditable(false);
+                    textArea.setFont(new Font("Arial", Font.BOLD, 18));
+                    textArea.setBackground(new Color(236, 236, 236));
+                    textArea.setForeground(new Color(6, 158, 6));
+                	contentPane.add(textArea);
+                } else if (this.typeB_count >= this.typeA_count && this.typeB_count >= this.typeC_count) {
+                	JTextArea textArea = new JTextArea(this.current_quiz.getResultText("B"));
+                    textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+                    textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
+                    textArea.setWrapStyleWord(true); // Quebra apenas em espaços
+                    textArea.setBounds(57, 105, 938, 300);
+                    textArea.setEditable(false);
+                    textArea.setFont(new Font("Arial", Font.BOLD, 18));
+                    textArea.setBackground(new Color(236, 236, 236));
+                    textArea.setForeground(new Color(246, 160, 0));
+                	contentPane.add(textArea);
+                } else {
+                	JTextArea textArea = new JTextArea(this.current_quiz.getResultText("C"));
+                    textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+                    textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
+                    textArea.setWrapStyleWord(true); // Quebra apenas em espaços
+                    textArea.setBounds(57, 105, 938, 300);
+                    textArea.setEditable(false);
+                    textArea.setFont(new Font("Arial", Font.BOLD, 18));
+                    textArea.setBackground(new Color(236, 236, 236));
+                    textArea.setForeground(Color.RED);
+                	contentPane.add(textArea);
+                }
+                
                 lblEnd.setFont(new Font("Times New Roman", Font.BOLD, 18));
                 lblEnd.setHorizontalAlignment(SwingConstants.CENTER);
                 lblEnd.setBounds(57, 45, 938, 28);

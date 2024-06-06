@@ -8,6 +8,9 @@ public class Quiz {
 	private String content;
 	private List<Question> questions;
 	private String result;
+	private String result_text_a;
+	private String result_text_b;
+	private String result_text_c;
 	private TaskList taskList;
 	private boolean done;
 	
@@ -59,5 +62,32 @@ public class Quiz {
 
 	public void setDone(boolean done) {
 		this.done = done;
+	}
+	
+	public String getResultText(String type) {
+		String result_formatted = "";
+		if(type == "A") {
+			result_formatted = this.result_text_a;
+		}
+		if(type == "B") {
+			result_formatted = this.result_text_b;
+		}
+		if(type == "C") {
+			result_formatted = this.result_text_c;
+		}
+		
+		return result_formatted;
+	}
+
+	public void setResultTextA(String text) {
+		this.result_text_a = text;
+	}
+	
+	public void setResultTextB(String text) {
+		this.result_text_b = text;
+	}
+	
+	public void setResultTextC(String text) {
+		this.result_text_c = text;
 	}
 }
