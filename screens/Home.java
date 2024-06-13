@@ -42,9 +42,6 @@ public class Home extends JFrame {
 
     List<String> lista = new ArrayList<>();
 
-    /**
-     * Create the frame.
-     */
     public Home() {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,6 +50,9 @@ public class Home extends JFrame {
         contentPane = new JPanel();
         contentPane.setToolTipText("true");
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        
+        List<Quiz> quizzesRealizados = new ArrayList<Quiz>();
+        List<Quiz> quizzesPendentes = new ArrayList<Quiz>();
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -63,22 +63,6 @@ public class Home extends JFrame {
         Font font_1 = new Font(lblNewLabel.getFont().getName(), Font.PLAIN, 18);
         lblNewLabel.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 18));
         contentPane.add(lblNewLabel);
-
-        JLabel divLike = new JLabel("3 Quizes finalizados", SwingConstants.CENTER);
-        divLike.setBounds(592, 44, 200, 30); // Ajuste as coordenadas e o tamanho conforme necessário
-        divLike.setBackground(Color.BLUE); // Define a cor de fundo como azul
-        divLike.setForeground(Color.WHITE); // Define a cor do texto como branco
-        divLike.setOpaque(true); // Necessário para tornar o fundo visível
-        divLike.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // Borda opcional
-        contentPane.add(divLike);
-
-        JLabel divLike_1 = new JLabel("3 Quizes pendentes", SwingConstants.CENTER);
-        divLike_1.setOpaque(true);
-        divLike_1.setForeground(Color.WHITE);
-        divLike_1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        divLike_1.setBackground(Color.RED);
-        divLike_1.setBounds(363, 44, 200, 30);
-        contentPane.add(divLike_1);
 
         List<Quiz> quizzes = new ArrayList<>();
         quizzes.add(DummyQuizes.createQuiz(1));
@@ -93,9 +77,6 @@ public class Home extends JFrame {
             System.out.println("Quiz ID: " + quiz.getId() + ", Done: " + quiz.isDone());
         }
 
-        List<Quiz> quizzesRealizados = new ArrayList<Quiz>();
-        List<Quiz> quizzesPendentes = new ArrayList<Quiz>();
-
         for (Quiz quiz : quizzes) {
             if (quiz.isDone()) {
                 quizzesRealizados.add(quiz);
@@ -103,10 +84,22 @@ public class Home extends JFrame {
                 quizzesPendentes.add(quiz);
             }
         }
+        
+        JLabel divLike = new JLabel(quizzesRealizados.size() + " Quizes finalizados", SwingConstants.CENTER);
+        divLike.setBounds(592, 44, 200, 30); // Ajuste as coordenadas e o tamanho conforme necessário
+        divLike.setBackground(Color.BLUE); // Define a cor de fundo como azul
+        divLike.setForeground(Color.WHITE); // Define a cor do texto como branco
+        divLike.setOpaque(true); // Necessário para tornar o fundo visível
+        divLike.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // Borda opcional
+        contentPane.add(divLike);
 
-
-        System.out.println("Quizzes Realizados: " + quizzesRealizados.size());
-        System.out.println("Quizzes Pendentes: " + quizzesPendentes.size());
+        JLabel divLike_1 = new JLabel(quizzesPendentes.size() + " Quizes pendentes", SwingConstants.CENTER);
+        divLike_1.setOpaque(true);
+        divLike_1.setForeground(Color.WHITE);
+        divLike_1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        divLike_1.setBackground(Color.RED);
+        divLike_1.setBounds(363, 44, 200, 30);
+        contentPane.add(divLike_1);
 
         JLabel lblNewLabel_2 = new JLabel("Pendentes:");
         lblNewLabel_2.setBounds(45, 122, 138, 13);
@@ -162,15 +155,15 @@ public class Home extends JFrame {
 
         JLabel lblNewLabel_2 = new JLabel(quiz.getContent());
         lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
-        lblNewLabel_2.setBounds(10, 10, 247, 13);
+        lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 15));
+        lblNewLabel_2.setBounds(10, 10, 247, 20);
         panel.add(lblNewLabel_2);
 
         JTextArea textArea = new JTextArea(quiz.getResume());
-        textArea.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+        textArea.setFont(new Font("Arial", Font.PLAIN, 12));
         textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
         textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-        textArea.setBounds(22, 33, 220, 79);
+        textArea.setBounds(22, 40, 240, 79);
         textArea.setEditable(false); // Impede que o usuário edite o texto
         textArea.setBackground(new Color(198, 198, 255));
         panel.add(textArea);
@@ -208,15 +201,15 @@ public class Home extends JFrame {
 
         JLabel lblNewLabel_2 = new JLabel(quiz.getContent());
         lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 15));
-        lblNewLabel_2.setBounds(10, 10, 247, 13);
+        lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 15));
+        lblNewLabel_2.setBounds(10, 10, 247, 20);
         panel.add(lblNewLabel_2);
 
         JTextArea textArea = new JTextArea(quiz.getResume());
-        textArea.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+        textArea.setFont(new Font("Arial", Font.PLAIN, 12));
         textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
         textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-        textArea.setBounds(22, 33, 220, 79);
+        textArea.setBounds(22, 40, 240, 79);
         textArea.setEditable(false); // Impede que o usuário edite o texto
         textArea.setBackground(new Color(198, 198, 255));
         panel.add(textArea);

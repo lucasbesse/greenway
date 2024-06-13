@@ -66,7 +66,7 @@ public class QuizScreen extends JFrame {
         contentPane.setLayout(null);
         
         JLabel lblNewLabel = new JLabel(this.current_quiz.getContent());
-        lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        lblNewLabel.setFont(new Font("Arial", Font.BOLD, 18));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setBounds(57, 45, 938, 28);
         contentPane.add(lblNewLabel);
@@ -79,38 +79,45 @@ public class QuizScreen extends JFrame {
     private void createQuestion(Question Question) {
         List<Option> opcoes = Question.getOptions();
         
-        group = new ButtonGroup(); // Inicialização do ButtonGroup para cada pergunta
-        radioButtonOptionMap = new HashMap<>(); // Inicialização do Map
+        group = new ButtonGroup();
+        radioButtonOptionMap = new HashMap<>();
         
         List<JRadioButton> radioButtons = new ArrayList<>();
         
         JLabel lblNewLabel_1 = new JLabel(Question.getDescription());
         lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
-        lblNewLabel_1.setBounds(33, 140, 889, 64);
-        lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        lblNewLabel_1.setBounds(76, 141, 889, 64);
+        lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 16));
         contentPane.add(lblNewLabel_1);
         
         int yPosition = 210;
         for (Option option : opcoes) {
             JRadioButton radioButton = new JRadioButton(option.getDescription());
-            radioButton.setBounds(33, yPosition, 962, 21);
+            radioButton.setFont(new Font("Arial", 0, 16));
+            radioButton.setBounds(33, yPosition, 962, 24);
             contentPane.add(radioButton);
             group.add(radioButton);
             radioButtons.add(radioButton);
-            radioButtonOptionMap.put(radioButton, option); // Adiciona o JRadioButton e Option ao Map
+            radioButtonOptionMap.put(radioButton, option); 
             yPosition += 40;
         }
         
         JButton btnNewButton = new JButton("Próxima pergunta");
+        btnNewButton.setFont(new Font("Arial", Font.BOLD, 15));
         btnNewButton.setForeground(Color.WHITE);
         btnNewButton.setBackground(new Color(0, 128, 255));
-        btnNewButton.setBounds(457, 422, 153, 37);
+        btnNewButton.setBounds(457, 422, 168, 45);
         btnNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nextQuestion(radioButtons);
             }
         });
         contentPane.add(btnNewButton);
+        
+        JLabel lblNewLabel_2 = new JLabel((this.current_question+1) + "/5 - ");
+        lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 16));
+        lblNewLabel_2.setBounds(37, 145, 45, 13);
+        contentPane.add(lblNewLabel_2);
     }
     
     private Option getSelectedOption(List<JRadioButton> radioButtons) {
@@ -141,7 +148,7 @@ public class QuizScreen extends JFrame {
             contentPane.revalidate();
             contentPane.repaint();
             JLabel lblNewLabel = new JLabel(this.current_quiz.getContent());
-            lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+            lblNewLabel.setFont(new Font("Arial", Font.BOLD, 18));
             lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
             lblNewLabel.setBounds(57, 45, 938, 28);
             contentPane.add(lblNewLabel);
@@ -158,7 +165,7 @@ public class QuizScreen extends JFrame {
                     textArea.setFont(new Font("Arial", Font.PLAIN, 12));
                     textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
                     textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-                    textArea.setBounds(57, 105, 938, 300);
+                    textArea.setBounds(57, 105, 1000, 300);
                     textArea.setEditable(false);
                     textArea.setFont(new Font("Arial", Font.BOLD, 18));
                     textArea.setBackground(new Color(236, 236, 236));
@@ -169,7 +176,7 @@ public class QuizScreen extends JFrame {
                     textArea.setFont(new Font("Arial", Font.PLAIN, 12));
                     textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
                     textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-                    textArea.setBounds(57, 105, 938, 300);
+                    textArea.setBounds(57, 105, 1000, 300);
                     textArea.setEditable(false);
                     textArea.setFont(new Font("Arial", Font.BOLD, 18));
                     textArea.setBackground(new Color(236, 236, 236));
@@ -180,7 +187,7 @@ public class QuizScreen extends JFrame {
                     textArea.setFont(new Font("Arial", Font.PLAIN, 12));
                     textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
                     textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-                    textArea.setBounds(57, 105, 938, 300);
+                    textArea.setBounds(57, 105, 1000, 300);
                     textArea.setEditable(false);
                     textArea.setFont(new Font("Arial", Font.BOLD, 18));
                     textArea.setBackground(new Color(236, 236, 236));
@@ -188,14 +195,32 @@ public class QuizScreen extends JFrame {
                 	contentPane.add(textArea);
                 }
                 
-                lblEnd.setFont(new Font("Times New Roman", Font.BOLD, 18));
+                lblEnd.setFont(new Font("Arial", Font.BOLD, 18));
                 lblEnd.setHorizontalAlignment(SwingConstants.CENTER);
                 lblEnd.setBounds(57, 45, 938, 28);
                 contentPane.add(lblEnd);
+                
+                JButton btnNewButton = new JButton("Concluir");
+                btnNewButton.setFont(new Font("Arial", Font.BOLD, 15));
+                btnNewButton.setForeground(Color.WHITE);
+                btnNewButton.setBackground(new Color(0, 128, 255));
+                btnNewButton.setBounds(457, 422, 168, 45);
+                btnNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    	concludeQuiz();
+                    }
+                });
+                contentPane.add(btnNewButton);
             }
         } else {
             System.out.println("Nenhuma opção selecionada");
             return;
         }
+    }
+    
+    private void concludeQuiz() {
+        Home home = new Home();
+        home.setVisible(true); 
+        dispose();
     }
 }

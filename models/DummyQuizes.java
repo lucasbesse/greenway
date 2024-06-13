@@ -338,7 +338,7 @@ public class DummyQuizes {
         quiz.setContent("Separação de Lixo");
         quiz.setQuestions(questions);
         quiz.setResume("Verifique seus hábitos de reciclagem em casa e encontre formas de aprimorar suas práticas de reciclagem");
-        quiz.setDone(true);
+        quiz.setDone(false);
         
         quiz.setResultTextA("Parabéns! Você está fazendo um ótimo trabalho na separação de lixo e reciclagem. Continue com esses hábitos sustentáveis. Aqui estão algumas ideias adicionais para aumentar sua eficiência na reciclagem:\r\n"
                 + "\r\n"
@@ -839,9 +839,9 @@ public class DummyQuizes {
         // Criar o quiz
         Quiz quiz = new Quiz();
         quiz.setId(5);
-        quiz.setContent("Redução de Desperdício de Alimentos");
+        quiz.setContent("Desperdício de Alimentos");
         quiz.setQuestions(questions);
-        quiz.setDone(true);
+        quiz.setDone(false);
 
         quiz.setResume("Avalie suas práticas de consumo de alimentos e descubra como reduzir o desperdício de alimentos em sua casa.");
 
@@ -849,19 +849,19 @@ public class DummyQuizes {
                 + "\r\n"
                 + "Compartilhar suas dicas com amigos e familiares.\r\n"
                 + "Experimentar novas receitas com sobras de alimentos.\r\n"
-                + "Aprofundar seus conhecimentos sobre compostagem.\"");
+                + "Aprofundar seus conhecimentos sobre compostagem.");
 
         quiz.setResultTextB("Você está no caminho certo para reduzir o desperdício de alimentos, mas sempre há espaço para melhorias. Considere:\r\n"
                 + "\r\n"
                 + "Planejar melhor suas compras de alimentos.\r\n"
                 + "Armazenar os alimentos de maneira mais eficiente.\r\n"
-                + "Reutilizar as sobras de alimentos em novas receitas.\"");
+                + "Reutilizar as sobras de alimentos em novas receitas.");
 
         quiz.setResultTextC("Há um grande espaço para melhorar suas práticas e reduzir o desperdício de alimentos. Sugestões:\r\n"
                 + "\r\n"
                 + "Começar a planejar suas refeições semanalmente.\r\n"
                 + "Tentar compostagem para resíduos orgânicos.\r\n"
-                + "Reutilizar sobras de refeições para evitar desperdício.\"");
+                + "Reutilizar sobras de refeições para evitar desperdício.");
 
         return quiz;
     }
