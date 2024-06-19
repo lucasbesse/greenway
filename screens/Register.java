@@ -55,7 +55,7 @@ public class Register extends JFrame {
 	 */
 	public Register() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 611, 319);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -65,27 +65,29 @@ public class Register extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Cadastro");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(20, 10, 416, 13);
+		lblNewLabel.setBounds(90, 10, 416, 19);
 		contentPane.add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(95, 76, 271, 19);
+		textField.setBounds(151, 76, 295, 19);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nome de usuário:");
-		lblNewLabel_1.setBounds(95, 61, 271, 13);
+		lblNewLabel_1.setBounds(151, 59, 271, 13);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Senha:");
-		lblNewLabel_1_1.setBounds(95, 115, 271, 13);
+		lblNewLabel_1_1.setBounds(151, 111, 271, 13);
 		contentPane.add(lblNewLabel_1_1);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(95, 129, 271, 19);
+		passwordField.setBounds(151, 126, 295, 19);
 		contentPane.add(passwordField);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
+		btnNewButton.setBackground(new Color(0, 0, 255));
+		btnNewButton.setForeground(new Color(255, 255, 255));
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -95,7 +97,7 @@ public class Register extends JFrame {
 			}
 		});
 		
-		btnNewButton.setBounds(148, 176, 165, 21);
+		btnNewButton.setBounds(183, 184, 230, 28);
 		contentPane.add(btnNewButton);
 	}
 	

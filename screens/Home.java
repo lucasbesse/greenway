@@ -23,6 +23,7 @@ public class Home extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    public String username;
 
     /**
      * Launch the application.
@@ -31,7 +32,7 @@ public class Home extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Home frame = new Home();
+                    Home frame = new Home("");
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -42,8 +43,8 @@ public class Home extends JFrame {
 
     List<String> lista = new ArrayList<>();
 
-    public Home() {
-
+    public Home(String userName) {
+    	this.username = userName;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1497, 700);
         setResizable(true);
@@ -57,7 +58,7 @@ public class Home extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Lucas G Bessegato");
+        JLabel lblNewLabel = new JLabel(this.username);
         lblNewLabel.setBounds(120, 39, 262, 34);
         lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
         Font font_1 = new Font(lblNewLabel.getFont().getName(), Font.PLAIN, 18);
