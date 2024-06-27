@@ -15,15 +15,21 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.util.Iterator;
 
+import controllers.QuizController;
+import models.User;
 import models.DummyQuizes;
 import models.Quiz;
+import javax.swing.*;
 
 public class Home extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    public String username;
+    public User user;
+    private ArrayList<Quiz> quizzesPendentes;
+    private ArrayList<Quiz> quizzesRealizados;
 
     /**
      * Launch the application.
@@ -32,7 +38,7 @@ public class Home extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Home frame = new Home("");
+                    Home frame = new Home(new User());
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -43,8 +49,8 @@ public class Home extends JFrame {
 
     List<String> lista = new ArrayList<>();
 
-    public Home(String userName) {
-    	this.username = userName;
+    public Home(User user) {
+    	this.user = user;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1497, 700);
         setResizable(true);
@@ -52,41 +58,48 @@ public class Home extends JFrame {
         contentPane.setToolTipText("true");
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         
-        List<Quiz> quizzesRealizados = new ArrayList<Quiz>();
-        List<Quiz> quizzesPendentes = new ArrayList<Quiz>();
-
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel(this.username);
+        JLabel lblNewLabel = new JLabel(this.user.getName());
         lblNewLabel.setBounds(120, 39, 262, 34);
         lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
         Font font_1 = new Font(lblNewLabel.getFont().getName(), Font.PLAIN, 18);
         lblNewLabel.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 18));
         contentPane.add(lblNewLabel);
-
-        List<Quiz> quizzes = new ArrayList<>();
-        quizzes.add(DummyQuizes.createQuiz(1));
-        quizzes.add(DummyQuizes.createQuiz(2));
-        quizzes.add(DummyQuizes.createQuiz(3));
-        quizzes.add(DummyQuizes.createQuiz(4));
-        quizzes.add(DummyQuizes.createQuiz(5));
+        
+        this.refreshData();
+        this.refreshContent();
+    }
+    
+    public void refreshData() {
+    	this.quizzesRealizados = new ArrayList<Quiz>();
+    	this.quizzesPendentes = new ArrayList<Quiz>();
+        
+        quizzesPendentes.add(DummyQuizes.createQuiz(1));
+        quizzesPendentes.add(DummyQuizes.createQuiz(2));
+        quizzesPendentes.add(DummyQuizes.createQuiz(3));
+        quizzesPendentes.add(DummyQuizes.createQuiz(4));
+        quizzesPendentes.add(DummyQuizes.createQuiz(5));
         // Adicione outros quizzes conforme necessário
 
+        // consulta quizzes ja realizados pelo usuario
+        quizzesRealizados = this.getAnsweredQuizzes();
+        
+        // filtra os pendentes cadastrados no sistema, com os ja realizados pelo usuario
+        quizzesPendentes = this.filterPendingQuizzes(quizzesPendentes, quizzesRealizados);
+        
         // Verificar o estado dos quizzes adicionados
-        for (Quiz quiz : quizzes) {
+        for (Quiz quiz : quizzesPendentes) {
             System.out.println("Quiz ID: " + quiz.getId() + ", Done: " + quiz.isDone());
         }
-
-        for (Quiz quiz : quizzes) {
-            if (quiz.isDone()) {
-                quizzesRealizados.add(quiz);
-            } else {
-                quizzesPendentes.add(quiz);
-            }
+        for (Quiz quiz : quizzesRealizados) {
+            System.out.println("Quiz ID: " + quiz.getId() + ", Done: " + quiz.isDone());
         }
-        
-        JLabel divLike = new JLabel(quizzesRealizados.size() + " Quizes finalizados", SwingConstants.CENTER);
+    }
+    
+    public void refreshContent() {
+        JLabel divLike = new JLabel(this.quizzesRealizados.size() + " Quizes finalizados", SwingConstants.CENTER);
         divLike.setBounds(592, 44, 200, 30); // Ajuste as coordenadas e o tamanho conforme necessário
         divLike.setBackground(Color.BLUE); // Define a cor de fundo como azul
         divLike.setForeground(Color.WHITE); // Define a cor do texto como branco
@@ -94,7 +107,7 @@ public class Home extends JFrame {
         divLike.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // Borda opcional
         contentPane.add(divLike);
 
-        JLabel divLike_1 = new JLabel(quizzesPendentes.size() + " Quizes pendentes", SwingConstants.CENTER);
+        JLabel divLike_1 = new JLabel(this.quizzesPendentes.size() + " Quizes pendentes", SwingConstants.CENTER);
         divLike_1.setOpaque(true);
         divLike_1.setForeground(Color.WHITE);
         divLike_1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -108,8 +121,8 @@ public class Home extends JFrame {
         lblNewLabel_2.setFont(font_3);
         contentPane.add(lblNewLabel_2);
 
-        for (int i = 0; i < quizzesRealizados.size(); i++) {
-            criarPainelQuizRealizado(i, quizzesRealizados.get(i));
+        for (int i = 0; i < this.quizzesRealizados.size(); i++) {
+            criarPainelQuizRealizado(i, this.quizzesRealizados.get(i));
         }
 
         JLabel lblNewLabel_1 = new JLabel("Realizados:");
@@ -118,9 +131,9 @@ public class Home extends JFrame {
         lblNewLabel_1.setFont(font_2);
         contentPane.add(lblNewLabel_1);
 
-        for (int i = 0; i < quizzesPendentes.size(); i++) {
+        for (int i = 0; i < this.quizzesPendentes.size(); i++) {
         	System.out.println(i);
-            criarPainelQuizPendente(i, quizzesPendentes.get(i));
+            criarPainelQuizPendente(i, this.quizzesPendentes.get(i));
         }
     }
 
@@ -217,8 +230,49 @@ public class Home extends JFrame {
     }
 
     private void openQuiz(Quiz quiz_reference) {
-        QuizScreen quiz = new QuizScreen(quiz_reference); // Cria uma nova instância da tela de registro
+        QuizScreen quiz = new QuizScreen(quiz_reference, this); // Cria uma nova instância da tela de registro
         quiz.setVisible(true); 
         dispose();
+    }
+    
+    private ArrayList<Quiz> getAnsweredQuizzes() {
+    	QuizController quizController = new QuizController();
+    	ArrayList<Quiz> quizzes = quizController.getAnsweredQuizzes(this.user.getName());
+    	return quizzes;
+    }
+    
+    private ArrayList<Quiz> filterPendingQuizzes(ArrayList<Quiz> pendingQuizzes, ArrayList<Quiz> answeredQuizzes) {
+    	ArrayList<Quiz> newPengindQuizzes = new ArrayList<Quiz>();
+    	
+    	for (Quiz pendingQuiz : pendingQuizzes) {
+    		boolean quizIsDone = false;
+    		for (Quiz answeredQuiz : answeredQuizzes) {
+        		if (answeredQuiz.getId() == pendingQuiz.getId()) {
+        			quizIsDone = true;
+        			answeredQuiz.setContent(pendingQuiz.getContent());
+        			answeredQuiz.setResume(pendingQuiz.getResume());
+        			
+        			switch (answeredQuiz.getResult()) {
+	        			case "A": 
+	        				answeredQuiz.setResultTextA(pendingQuiz.getResultText("A"));
+	        				break;
+	        			case "B": 
+	        				answeredQuiz.setResultTextA(pendingQuiz.getResultText("B"));
+	        				break;
+	        			case "C": 
+	        				answeredQuiz.setResultTextA(pendingQuiz.getResultText("C"));
+	        				break;
+        			}
+        			
+        			break;
+        		}
+        	}
+    		
+    		if (!quizIsDone) {
+        		newPengindQuizzes.add(pendingQuiz);
+    		}
+    	}
+    	
+    	return newPengindQuizzes;
     }
 }

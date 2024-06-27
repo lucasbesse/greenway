@@ -144,14 +144,14 @@ public class Login extends JFrame {
 		UserController userController = new UserController();
 		User user = userController.authenticate(name, password);
 		if (user != null) {
-			this.openHomeScreen();
+			this.openHomeScreen(user);
 			return;
 		}
 		errorLabel.setVisible(true);
 	}
 	
-	private void openHomeScreen() {
-		Home home = new Home(name); 
+	private void openHomeScreen(User user) {
+		Home home = new Home(user); 
 		home.setVisible(true);
 		dispose();
 	}

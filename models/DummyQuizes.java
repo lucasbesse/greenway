@@ -170,7 +170,7 @@ public class DummyQuizes {
         quiz.setContent("Preservação de Água");
         quiz.setQuestions(questions);
         quiz.setResume("Avalie seus hábitos diários e descubra como você pode melhorar na preservação da água.");
-        quiz.setDone(true);
+        quiz.setDone(false);
         
         quiz.setResultTextA("Parabéns! Você está fazendo um ótimo trabalho na preservação da água. Continue com os hábitos sustentáveis que você já pratica. Aqui estão algumas ideias adicionais para aumentar sua eficiência no uso da água:\r\n"
         		+ "\r\n"

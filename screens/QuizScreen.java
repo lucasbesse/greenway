@@ -14,6 +14,10 @@ import javax.swing.border.EmptyBorder;
 import models.Option;
 import models.Question;
 import models.Quiz;
+import models.User;
+
+import controllers.QuizController;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
@@ -22,12 +26,15 @@ import javax.swing.JTextArea;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class QuizScreen extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private Quiz current_quiz;
+    private Home home;
     private int current_question = 0;
     private ButtonGroup group; // Declaração do ButtonGroup a nível de classe
     private Map<JRadioButton, Option> radioButtonOptionMap; // Mapa para associar JRadioButton a Option
@@ -43,7 +50,9 @@ public class QuizScreen extends JFrame {
             public void run() {
                 try {
                     Quiz quiz = new Quiz();
-                    QuizScreen frame = new QuizScreen(quiz);
+                    User user = new User();
+                    Home home = new Home(user);
+                    QuizScreen frame = new QuizScreen(quiz, home);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -55,8 +64,9 @@ public class QuizScreen extends JFrame {
     /**
      * Create the frame.
      */
-    public QuizScreen(Quiz quiz) {
+    public QuizScreen(Quiz quiz, Home home) {
         this.current_quiz = quiz;
+        this.home = home;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1067, 634);
         contentPane = new JPanel();
@@ -71,9 +81,22 @@ public class QuizScreen extends JFrame {
         lblNewLabel.setBounds(57, 45, 938, 28);
         contentPane.add(lblNewLabel);
         
-        List<Question> Questions = this.current_quiz.getQuestions();
+        if (quiz.isDone()) {
+        	System.out.println("is done Quiz ID: " + quiz.getId() + ", Done: " + quiz.isDone() + ", Result: " + quiz.getResult());
+        	this.getFinishSection(quiz.getResult());
+        } else {        	
+        	List<Question> Questions = this.current_quiz.getQuestions();
+        	
+        	createQuestion(Questions.get(this.current_question));
+        }
         
-        createQuestion(Questions.get(this.current_question));
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                home.refreshData();
+                home.refreshContent();
+            }
+        });
     }
     
     private void createQuestion(Question Question) {
@@ -162,6 +185,7 @@ public class QuizScreen extends JFrame {
                 
                 if (this.typeA_count >= this.typeB_count && this.typeA_count >= this.typeC_count) {
                 	JTextArea textArea = new JTextArea(this.current_quiz.getResultText("A"));
+                	this.current_quiz.setResult("A");
                     textArea.setFont(new Font("Arial", Font.PLAIN, 12));
                     textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
                     textArea.setWrapStyleWord(true); // Quebra apenas em espaços
@@ -173,6 +197,7 @@ public class QuizScreen extends JFrame {
                 	contentPane.add(textArea);
                 } else if (this.typeB_count >= this.typeA_count && this.typeB_count >= this.typeC_count) {
                 	JTextArea textArea = new JTextArea(this.current_quiz.getResultText("B"));
+                	this.current_quiz.setResult("B");
                     textArea.setFont(new Font("Arial", Font.PLAIN, 12));
                     textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
                     textArea.setWrapStyleWord(true); // Quebra apenas em espaços
@@ -184,6 +209,7 @@ public class QuizScreen extends JFrame {
                 	contentPane.add(textArea);
                 } else {
                 	JTextArea textArea = new JTextArea(this.current_quiz.getResultText("C"));
+                	this.current_quiz.setResult("C");
                     textArea.setFont(new Font("Arial", Font.PLAIN, 12));
                     textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
                     textArea.setWrapStyleWord(true); // Quebra apenas em espaços
@@ -218,9 +244,70 @@ public class QuizScreen extends JFrame {
         }
     }
     
+    private void getFinishSection(String result) {
+    	if (result.equals("A")) {
+        	JTextArea textArea = new JTextArea(this.current_quiz.getResultText("A"));
+        	this.current_quiz.setResult("A");
+            textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+            textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
+            textArea.setWrapStyleWord(true); // Quebra apenas em espaços
+            textArea.setBounds(57, 105, 1000, 300);
+            textArea.setEditable(false);
+            textArea.setFont(new Font("Arial", Font.BOLD, 18));
+            textArea.setBackground(new Color(236, 236, 236));
+            textArea.setForeground(new Color(6, 158, 6));
+        	contentPane.add(textArea);
+        } else if (result.equals("B")) {
+        	JTextArea textArea = new JTextArea(this.current_quiz.getResultText("B"));
+        	this.current_quiz.setResult("B");
+            textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+            textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
+            textArea.setWrapStyleWord(true); // Quebra apenas em espaços
+            textArea.setBounds(57, 105, 1000, 300);
+            textArea.setEditable(false);
+            textArea.setFont(new Font("Arial", Font.BOLD, 18));
+            textArea.setBackground(new Color(236, 236, 236));
+            textArea.setForeground(new Color(246, 160, 0));
+        	contentPane.add(textArea);
+        } else {
+        	JTextArea textArea = new JTextArea(this.current_quiz.getResultText("C"));
+        	this.current_quiz.setResult("C");
+            textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+            textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
+            textArea.setWrapStyleWord(true); // Quebra apenas em espaços
+            textArea.setBounds(57, 105, 1000, 300);
+            textArea.setEditable(false);
+            textArea.setFont(new Font("Arial", Font.BOLD, 18));
+            textArea.setBackground(new Color(236, 236, 236));
+            textArea.setForeground(Color.RED);
+        	contentPane.add(textArea);
+        }
+    	
+    	JButton btnNewButton = new JButton("Voltar");
+        btnNewButton.setFont(new Font("Arial", Font.BOLD, 15));
+        btnNewButton.setForeground(Color.WHITE);
+        btnNewButton.setBackground(new Color(0, 128, 255));
+        btnNewButton.setBounds(457, 422, 168, 45);
+        btnNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            	backToHomeScreen();
+            }
+        });
+        contentPane.add(btnNewButton);
+    }
+    
     private void concludeQuiz() {
-        Home home = new Home();
-        home.setVisible(true); 
+    	QuizController quizController = new QuizController();
+    	User user = home.user;
+    	
+    	String username = user.getName();
+    	quizController.saveQuizResult(current_quiz, username);
+        this.home.setVisible(true); 
+        dispose();
+    }
+    
+    private void backToHomeScreen() {
+    	this.home.setVisible(true); 
         dispose();
     }
 }
