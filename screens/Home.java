@@ -60,9 +60,10 @@ public class Home extends JFrame {
         
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        contentPane.setBackground(new Color(245, 245, 255));
 
         JLabel lblNewLabel = new JLabel(this.user.getName());
-        lblNewLabel.setBounds(120, 39, 262, 34);
+        lblNewLabel.setBounds(120, 39, 210, 34);
         lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
         Font font_1 = new Font(lblNewLabel.getFont().getName(), Font.PLAIN, 18);
         lblNewLabel.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 18));
@@ -100,7 +101,7 @@ public class Home extends JFrame {
     
     public void refreshContent() {
         JLabel divLike = new JLabel(this.quizzesRealizados.size() + " Quizes finalizados", SwingConstants.CENTER);
-        divLike.setBounds(592, 44, 200, 30); // Ajuste as coordenadas e o tamanho conforme necessário
+        divLike.setBounds(510, 44, 200, 30); // Ajuste as coordenadas e o tamanho conforme necessário
         divLike.setBackground(Color.BLUE); // Define a cor de fundo como azul
         divLike.setForeground(Color.WHITE); // Define a cor do texto como branco
         divLike.setOpaque(true); // Necessário para tornar o fundo visível
@@ -112,12 +113,12 @@ public class Home extends JFrame {
         divLike_1.setForeground(Color.WHITE);
         divLike_1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         divLike_1.setBackground(Color.RED);
-        divLike_1.setBounds(363, 44, 200, 30);
+        divLike_1.setBounds(290, 44, 200, 30);
         contentPane.add(divLike_1);
 
         JLabel lblNewLabel_2 = new JLabel("Pendentes:");
         lblNewLabel_2.setBounds(45, 122, 138, 13);
-        Font font_3 = new Font(lblNewLabel_2.getFont().getName(), Font.PLAIN, 16);
+        Font font_3 = new Font(lblNewLabel_2.getFont().getName(), Font.PLAIN, 18);
         lblNewLabel_2.setFont(font_3);
         contentPane.add(lblNewLabel_2);
 
@@ -127,7 +128,7 @@ public class Home extends JFrame {
 
         JLabel lblNewLabel_1 = new JLabel("Realizados:");
         lblNewLabel_1.setBounds(45, 382, 138, 13);
-        Font font_2 = new Font(lblNewLabel_1.getFont().getName(), Font.PLAIN, 16);
+        Font font_2 = new Font(lblNewLabel_1.getFont().getName(), Font.PLAIN, 18);
         lblNewLabel_1.setFont(font_2);
         contentPane.add(lblNewLabel_1);
 
@@ -152,7 +153,7 @@ public class Home extends JFrame {
         int x = margemX + (numero % colunas) * (larguraPainel + margemX);
 
         panel.setBounds(x, y, 267, 158);
-        panel.setBackground(new Color(198, 198, 255));
+        panel.setBackground(new Color(205, 205, 252));
         contentPane.add(panel);
 
         JButton btnNewButton = new JButton("Ver Resultado");
@@ -179,7 +180,7 @@ public class Home extends JFrame {
         textArea.setWrapStyleWord(true); // Quebra apenas em espaços
         textArea.setBounds(22, 40, 240, 79);
         textArea.setEditable(false); // Impede que o usuário edite o texto
-        textArea.setBackground(new Color(198, 198, 255));
+        textArea.setBackground(new Color(205, 205, 252));
         panel.add(textArea);
     }
 
@@ -198,12 +199,12 @@ public class Home extends JFrame {
         int x = margemX + (numero % colunas) * (larguraPainel + margemX);
 
         panel.setBounds(x, y, 267, 158);
-        panel.setBackground(new Color(198, 198, 255));
+        panel.setBackground(new Color(180, 180, 254));
         contentPane.add(panel);
 
         JButton btnNewButton = new JButton("Iniciar Quiz");
-        btnNewButton.setForeground(new Color(0, 0, 0));
-        btnNewButton.setBackground(new Color(243, 243, 255));
+        btnNewButton.setForeground(new Color(255, 255, 255));
+        btnNewButton.setBackground(new Color(79, 79, 255));
         btnNewButton.setBounds(38, 122, 192, 26);
         btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Define o cursor como de mão
         btnNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -225,7 +226,7 @@ public class Home extends JFrame {
         textArea.setWrapStyleWord(true); // Quebra apenas em espaços
         textArea.setBounds(22, 40, 240, 79);
         textArea.setEditable(false); // Impede que o usuário edite o texto
-        textArea.setBackground(new Color(198, 198, 255));
+        textArea.setBackground(new Color(180, 180, 254));
         panel.add(textArea);
     }
 

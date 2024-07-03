@@ -74,6 +74,7 @@ public class QuizScreen extends JFrame {
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        contentPane.setBackground(new Color(235, 235, 255));
         
         JLabel lblNewLabel = new JLabel(this.current_quiz.getContent());
         lblNewLabel.setFont(new Font("Arial", Font.BOLD, 18));
@@ -111,13 +112,16 @@ public class QuizScreen extends JFrame {
         lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
         lblNewLabel_1.setBounds(76, 141, 889, 64);
         lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 16));
+        lblNewLabel_1.setBackground(new Color(235, 235, 255));
         contentPane.add(lblNewLabel_1);
+        
         
         int yPosition = 210;
         for (Option option : opcoes) {
             JRadioButton radioButton = new JRadioButton(option.getDescription());
             radioButton.setFont(new Font("Arial", 0, 16));
             radioButton.setBounds(33, yPosition, 962, 24);
+            radioButton.setBackground(new Color(235, 235, 255));
             contentPane.add(radioButton);
             group.add(radioButton);
             radioButtons.add(radioButton);
@@ -137,7 +141,7 @@ public class QuizScreen extends JFrame {
         });
         contentPane.add(btnNewButton);
         
-        JLabel lblNewLabel_2 = new JLabel((this.current_question+1) + "/5 - ");
+        JLabel lblNewLabel_2 = new JLabel((this.current_question+1) + "/6 - ");
         lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 16));
         lblNewLabel_2.setBounds(37, 145, 45, 13);
         contentPane.add(lblNewLabel_2);
@@ -189,10 +193,10 @@ public class QuizScreen extends JFrame {
                     textArea.setFont(new Font("Arial", Font.PLAIN, 12));
                     textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
                     textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-                    textArea.setBounds(57, 105, 1000, 300);
+                    textArea.setBounds(40, 105, 1000, 300);
                     textArea.setEditable(false);
                     textArea.setFont(new Font("Arial", Font.BOLD, 18));
-                    textArea.setBackground(new Color(236, 236, 236));
+                    textArea.setBackground(new Color(235, 235, 255));
                     textArea.setForeground(new Color(6, 158, 6));
                 	contentPane.add(textArea);
                 } else if (this.typeB_count >= this.typeA_count && this.typeB_count >= this.typeC_count) {
@@ -201,10 +205,10 @@ public class QuizScreen extends JFrame {
                     textArea.setFont(new Font("Arial", Font.PLAIN, 12));
                     textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
                     textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-                    textArea.setBounds(57, 105, 1000, 300);
+                    textArea.setBounds(40, 105, 1000, 300);
                     textArea.setEditable(false);
                     textArea.setFont(new Font("Arial", Font.BOLD, 18));
-                    textArea.setBackground(new Color(236, 236, 236));
+                    textArea.setBackground(new Color(235, 235, 255));
                     textArea.setForeground(new Color(246, 160, 0));
                 	contentPane.add(textArea);
                 } else {
@@ -213,10 +217,10 @@ public class QuizScreen extends JFrame {
                     textArea.setFont(new Font("Arial", Font.PLAIN, 12));
                     textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
                     textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-                    textArea.setBounds(57, 105, 1000, 300);
+                    textArea.setBounds(40, 105, 1000, 300);
                     textArea.setEditable(false);
                     textArea.setFont(new Font("Arial", Font.BOLD, 18));
-                    textArea.setBackground(new Color(236, 236, 236));
+                    textArea.setBackground(new Color(235, 235, 255));
                     textArea.setForeground(Color.RED);
                 	contentPane.add(textArea);
                 }
@@ -251,10 +255,10 @@ public class QuizScreen extends JFrame {
             textArea.setFont(new Font("Arial", Font.PLAIN, 12));
             textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
             textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-            textArea.setBounds(57, 105, 1000, 300);
+            textArea.setBounds(40, 105, 1000, 300);
             textArea.setEditable(false);
             textArea.setFont(new Font("Arial", Font.BOLD, 18));
-            textArea.setBackground(new Color(236, 236, 236));
+            textArea.setBackground(new Color(235, 235, 255));
             textArea.setForeground(new Color(6, 158, 6));
         	contentPane.add(textArea);
         } else if (result.equals("B")) {
@@ -263,10 +267,10 @@ public class QuizScreen extends JFrame {
             textArea.setFont(new Font("Arial", Font.PLAIN, 12));
             textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
             textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-            textArea.setBounds(57, 105, 1000, 300);
+            textArea.setBounds(40, 105, 1000, 300);
             textArea.setEditable(false);
             textArea.setFont(new Font("Arial", Font.BOLD, 18));
-            textArea.setBackground(new Color(236, 236, 236));
+            textArea.setBackground(new Color(235, 235, 255));
             textArea.setForeground(new Color(246, 160, 0));
         	contentPane.add(textArea);
         } else {
@@ -275,10 +279,10 @@ public class QuizScreen extends JFrame {
             textArea.setFont(new Font("Arial", Font.PLAIN, 12));
             textArea.setLineWrap(true); // Permite que o texto quebre automaticamente
             textArea.setWrapStyleWord(true); // Quebra apenas em espaços
-            textArea.setBounds(57, 105, 1000, 300);
+            textArea.setBounds(40, 105, 1000, 300);
             textArea.setEditable(false);
             textArea.setFont(new Font("Arial", Font.BOLD, 18));
-            textArea.setBackground(new Color(236, 236, 236));
+            textArea.setBackground(new Color(235, 235, 255));
             textArea.setForeground(Color.RED);
         	contentPane.add(textArea);
         }

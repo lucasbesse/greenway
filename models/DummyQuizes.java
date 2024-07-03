@@ -155,6 +155,31 @@ public class DummyQuizes {
         question5.setId(5);
         question5.setDescription("Como você usa a máquina de lavar roupa?");
         question5.setOptions(optionsQ5);
+        
+        Option option1Q6 = new Option();
+        option1Q6.setId(16);
+        option1Q6.setDescription("Lavo todos de uma vez em uma bacia");
+        option1Q6.setType("A");
+
+        Option option2Q6 = new Option();
+        option2Q6.setId(17);
+        option2Q6.setDescription("Lavo um por um em água corrente");
+        option2Q6.setType("C");
+
+        Option option3Q6 = new Option();
+        option3Q6.setId(18);
+        option3Q6.setDescription("Às vezes uso uma bacia, às vezes lavo em água corrente");
+        option3Q6.setType("B");
+
+        List<Option> optionsQ6 = new ArrayList<>();
+        optionsQ6.add(option1Q6);
+        optionsQ6.add(option2Q6);
+        optionsQ6.add(option3Q6);
+
+        Question question6 = new Question();
+        question6.setId(6);
+        question6.setDescription("Como você lava vegetais e frutas?");
+        question6.setOptions(optionsQ6);
 
         // Adicionar todas as perguntas à lista de perguntas
         List<Question> questions = new ArrayList<>();
@@ -163,6 +188,7 @@ public class DummyQuizes {
         questions.add(question3);
         questions.add(question4);
         questions.add(question5);
+        questions.add(question6);
 
         // Criar o quiz
         Quiz quiz = new Quiz();
@@ -173,22 +199,28 @@ public class DummyQuizes {
         quiz.setDone(false);
         
         quiz.setResultTextA("Parabéns! Você está fazendo um ótimo trabalho na preservação da água. Continue com os hábitos sustentáveis que você já pratica. Aqui estão algumas ideias adicionais para aumentar sua eficiência no uso da água:\r\n"
-        		+ "\r\n"
-        		+ "Reutilizar água da chuva para regar o jardim.\r\n"
-        		+ "Instalar torneiras com controle de vazão.\r\n"
-        		+ "Tomar banhos mais curtos para economizar água.\"");
+        	    + "\r\n"
+        	    + "• Reutilizar água da chuva para regar o jardim.\r\n"
+        	    + "• Instalar torneiras com controle de vazão.\r\n"
+        	    + "• Tomar banhos mais curtos para economizar água.\r\n"
+        	    + "• Lavar frutas e vegetais em uma bacia, reutilizando a água para outras tarefas.");
         
         quiz.setResultTextB("Você está no caminho certo na preservação da água, mas sempre há espaço para melhorias. Considere implementar algumas das seguintes práticas para continuar economizando água:\r\n"
-        		+ "\r\n"
-        		+ "Desligar a torneira enquanto escova os dentes.\r\n"
-        		+ "Verificar e consertar vazamentos de água.\r\n"
-        		+ "Usar a máquina de lavar roupa apenas quando estiver completamente cheia.\"");
+        	    + "\r\n"
+        	    + "• Desligar a torneira enquanto escova os dentes.\r\n"
+        	    + "• Verificar e consertar vazamentos de água.\r\n"
+        	    + "• Usar a máquina de lavar roupa apenas quando estiver completamente cheia.\r\n"
+        	    + "• Coletar água fria enquanto espera a água esquentar para tomar banho.\r\n"
+        	    + "• Lavar frutas e vegetais em uma bacia, economizando água.");
         
-        quiz.setResultTextC("É necessário um esforço significativo para melhorar na preservação da água, seus hábitos não estão legais.. Aqui estão algumas sugestões urgentes para começar a conservar melhor este recurso vital:\r\n"
-        		+ "\r\n"
-        		+ "Reduzir o tempo de banho para economizar água.\r\n"
-        		+ "Evitar lavar o carro com mangueira.\r\n"
-        		+ "Instalar dispositivos de economia de água nos chuveiros e torneiras.");
+        quiz.setResultTextC("É necessário um esforço significativo para melhorar na preservação da água, seus hábitos não estão legais. Aqui estão algumas sugestões urgentes para começar a conservar melhor este recurso vital:\r\n"
+        	    + "\r\n"
+        	    + "• Reduzir o tempo de banho para economizar água.\r\n"
+        	    + "• Evitar lavar o carro com mangueira.\r\n"
+        	    + "• Instalar dispositivos de economia de água nos chuveiros e torneiras.\r\n"
+        	    + "• Desligar a torneira enquanto lava louça e ensaboar todas as peças antes de enxaguar.\r\n"
+        	    + "• Não usar a mangueira para varrer a calçada, usar uma vassoura.\r\n"
+        	    + "• Lavar frutas e vegetais em uma bacia para reduzir o desperdício de água.");
 
         return quiz;
     }
@@ -323,6 +355,31 @@ public class DummyQuizes {
         question5.setId(5);
         question5.setDescription("Você leva recicláveis aos pontos de coleta?");
         question5.setOptions(optionsQ5);
+        
+        Option option1Q6 = new Option();
+        option1Q6.setId(16);
+        option1Q6.setDescription("Composto todos os resíduos orgânicos que são possíveis.");
+        option1Q6.setType("A");
+
+        Option option2Q6 = new Option();
+        option2Q6.setId(17);
+        option2Q6.setDescription("Às vezes faço compostagem, quando possível.");
+        option2Q6.setType("B");
+
+        Option option3Q6 = new Option();
+        option3Q6.setId(18);
+        option3Q6.setDescription("Não pratico compostagem de resíduos orgânicos.");
+        option3Q6.setType("C");
+
+        List<Option> optionsQ6 = new ArrayList<>();
+        optionsQ6.add(option1Q6);
+        optionsQ6.add(option2Q6);
+        optionsQ6.add(option3Q6);
+
+        Question question6 = new Question();
+        question6.setId(6);
+        question6.setDescription("Você pratica a compostagem de resíduos orgânicos?");
+        question6.setOptions(optionsQ6);
 
         // Adicionar todas as perguntas à lista de perguntas
         List<Question> questions = new ArrayList<>();
@@ -331,6 +388,7 @@ public class DummyQuizes {
         questions.add(question3);
         questions.add(question4);
         questions.add(question5);
+        questions.add(question6);
 
         // Criar o quiz
         Quiz quiz = new Quiz();
@@ -341,22 +399,25 @@ public class DummyQuizes {
         quiz.setDone(false);
         
         quiz.setResultTextA("Parabéns! Você está fazendo um ótimo trabalho na separação de lixo e reciclagem. Continue com esses hábitos sustentáveis. Aqui estão algumas ideias adicionais para aumentar sua eficiência na reciclagem:\r\n"
-                + "\r\n"
-                + "Separar adequadamente lixos eletrônicos e baterias.\r\n"
-                + "Participar de programas de reciclagem comunitária.\r\n"
-                + "Reduzir o uso de plásticos descartáveis.\"");
+        	    + "\r\n"
+        	    + "• Separar adequadamente lixos eletrônicos e baterias.\r\n"
+        	    + "• Participar de programas de reciclagem comunitária.\r\n"
+        	    + "• Reduzir o uso de plásticos descartáveis.\r\n"
+        	    + "• Compostar todos os resíduos orgânicos que são possíveis.");
         
         quiz.setResultTextB("Você está no caminho certo na separação de lixo e reciclagem, mas sempre há espaço para melhorias. Considere implementar algumas das seguintes práticas para continuar melhorando:\r\n"
-                + "\r\n"
-                + "Lavar os recipientes recicláveis antes de descartá-los.\r\n"
-                + "Estabelecer um local específico para armazenar recicláveis.\r\n"
-                + "Levar recicláveis aos pontos de coleta regularmente.\"");
+        	    + "\r\n"
+        	    + "• Lavar os recipientes recicláveis antes de descartá-los.\r\n"
+        	    + "• Estabelecer um local específico para armazenar recicláveis.\r\n"
+        	    + "• Levar recicláveis aos pontos de coleta regularmente.\r\n"
+        	    + "• Praticar compostagem quando possível.");
         
         quiz.setResultTextC("É necessário um esforço significativo para melhorar na separação de lixo e reciclagem. Aqui estão algumas sugestões urgentes para começar a melhorar seus hábitos de reciclagem:\r\n"
-                + "\r\n"
-                + "Separar o lixo orgânico do reciclável.\r\n"
-                + "Descartar corretamente lixos eletrônicos.\r\n"
-                + "Participar de programas de reciclagem e levar recicláveis aos pontos de coleta.\"");
+        	    + "\r\n"
+        	    + "• Separar o lixo orgânico do reciclável.\r\n"
+        	    + "• Descartar corretamente lixos eletrônicos.\r\n"
+        	    + "• Participar de programas de reciclagem e levar recicláveis aos pontos de coleta.\r\n"
+        	    + "• Considerar começar a praticar compostagem de resíduos orgânicos.");
 
         return quiz;
     }
@@ -491,6 +552,32 @@ public class DummyQuizes {
         question5.setId(5);
         question5.setDescription("Quão eficientes são seus eletrodomésticos em termos de consumo de energia?");
         question5.setOptions(optionsQ5);
+        
+        Option option1Q6 = new Option();
+        option1Q6.setId(16);
+        option1Q6.setDescription("Estou considerando instalar painéis solares em casa.");
+        option1Q6.setType("A");
+
+        Option option2Q6 = new Option();
+        option2Q6.setId(17);
+        option2Q6.setDescription("Não considero instalar painéis solares.");
+        option2Q6.setType("B");
+
+        Option option3Q6 = new Option();
+        option3Q6.setId(18);
+        option3Q6.setDescription("Já tenho painéis solares instalados.");
+        option3Q6.setType("C");
+
+        List<Option> optionsQ6 = new ArrayList<>();
+        optionsQ6.add(option1Q6);
+        optionsQ6.add(option3Q6);
+        optionsQ6.add(option2Q6);
+
+        Question question6 = new Question();
+        question6.setId(6);
+        question6.setDescription("Você considera usar energia solar em sua residência?");
+        question6.setOptions(optionsQ6);
+
 
         // Adicionar todas as perguntas à lista de perguntas
         List<Question> questions = new ArrayList<>();
@@ -499,6 +586,7 @@ public class DummyQuizes {
         questions.add(question3);
         questions.add(question4);
         questions.add(question5);
+        questions.add(question6);
 
         // Criar o quiz
         Quiz quiz = new Quiz();
@@ -509,22 +597,25 @@ public class DummyQuizes {
         quiz.setDone(false);
         
         quiz.setResultTextA("Parabéns! Você está fazendo um ótimo trabalho na economia de energia elétrica. Continue com esses hábitos sustentáveis. Aqui estão algumas ideias adicionais para aumentar sua eficiência energética:\r\n"
-                + "\r\n"
-                + "Investir em painéis solares para gerar sua própria energia.\r\n"
-                + "Usar temporizadores para controlar automaticamente o uso de eletrônicos.\r\n"
-                + "Manter a manutenção regular de aparelhos para garantir sua eficiência.\"");
+        	    + "\r\n"
+        	    + "• Investir em painéis solares para gerar sua própria energia.\r\n"
+        	    + "• Usar temporizadores para controlar automaticamente o uso de eletrônicos.\r\n"
+        	    + "• Manter a manutenção regular de aparelhos para garantir sua eficiência.\r\n"
+        	    + "• Considerar a instalação de painéis solares para reduzir ainda mais sua pegada de carbono.");
         
         quiz.setResultTextB("Você está no caminho certo na economia de energia elétrica, mas sempre há espaço para melhorias. Considere implementar algumas das seguintes práticas para continuar melhorando:\r\n"
-                + "\r\n"
-                + "Desligar todos os aparelhos quando não estão em uso.\r\n"
-                + "Trocar todas as lâmpadas por LEDs.\r\n"
-                + "Evitar o uso desnecessário do ar condicionado.\"");
+        	    + "\r\n"
+        	    + "• Desligar todos os aparelhos quando não estão em uso.\r\n"
+        	    + "• Trocar todas as lâmpadas por LEDs.\r\n"
+        	    + "• Evitar o uso desnecessário do ar condicionado.\r\n"
+        	    + "• Avaliar a viabilidade de instalar painéis solares para reduzir custos de energia.");
         
         quiz.setResultTextC("É necessário um esforço significativo para melhorar na economia de energia elétrica. Aqui estão algumas sugestões urgentes para começar a melhorar seus hábitos de consumo de energia:\r\n"
-                + "\r\n"
-                + "Desligar aparelhos eletrônicos quando não estiverem em uso.\r\n"
-                + "Reduzir o uso de lâmpadas incandescentes e adotar LEDs.\r\n"
-                + "Usar o ar condicionado de forma moderada e apenas quando necessário.\"");
+        	    + "\r\n"
+        	    + "• Desligar aparelhos eletrônicos quando não estiverem em uso.\r\n"
+        	    + "• Reduzir o uso de lâmpadas incandescentes e adotar LEDs.\r\n"
+        	    + "• Usar o ar condicionado de forma moderada e apenas quando necessário.\r\n"
+        	    + "• Considerar seriamente a instalação de painéis solares para reduzir sua conta de energia e impacto ambiental.");
 
         return quiz;
     }
@@ -659,6 +750,31 @@ public class DummyQuizes {
         question5.setId(5);
         question5.setDescription("Quais tipos de veículos você utiliza?");
         question5.setOptions(optionsQ5);
+        
+        Option option1Q6 = new Option();
+        option1Q6.setId(16);
+        option1Q6.setDescription("Participo de iniciativas de mobilidade urbana sustentável (por exemplo, uso de patinetes elétricos, compartilhamento de bicicletas).");
+        option1Q6.setType("A");
+
+        Option option2Q6 = new Option();
+        option2Q6.setId(17);
+        option2Q6.setDescription("Utilizo aplicativos de carona compartilhada (por exemplo, Uber Pool, BlaBlaCar).");
+        option2Q6.setType("B");
+
+        Option option3Q6 = new Option();
+        option3Q6.setId(18);
+        option3Q6.setDescription("Não pratico nenhuma iniciativa específica de mobilidade urbana sustentável.");
+        option3Q6.setType("C");
+
+        List<Option> optionsQ6 = new ArrayList<>();
+        optionsQ6.add(option1Q6);
+        optionsQ6.add(option2Q6);
+        optionsQ6.add(option3Q6);
+
+        Question question6 = new Question();
+        question6.setId(6);
+        question6.setDescription("Além das suas opções de transporte habituais, você participa de outras práticas de mobilidade urbana sustentável?");
+        question6.setOptions(optionsQ6);
 
         // Adicionar todas as perguntas à lista de perguntas
         List<Question> questions = new ArrayList<>();
@@ -667,6 +783,7 @@ public class DummyQuizes {
         questions.add(question3);
         questions.add(question4);
         questions.add(question5);
+        questions.add(question6);
 
         // Criar o quiz
         Quiz quiz = new Quiz();
@@ -678,21 +795,21 @@ public class DummyQuizes {
 
         quiz.setResultTextA("Parabéns! Você está adotando práticas de transporte muito ecológicas. Continue assim e considere:\r\n"
                 + "\r\n"
-                + "Investir em um veículo elétrico.\r\n"
-                + "Utilizar ainda mais o transporte público.\r\n"
-                + "Incentivar outras pessoas a fazerem caronas compartilhadas.\"");
+                + "• Investir em um veículo elétrico.\r\n"
+                + "• Utilizar ainda mais o transporte público.\r\n"
+                + "• Incentivar outras pessoas a fazerem caronas compartilhadas.");
 
         quiz.setResultTextB("Você está no caminho certo para práticas de transporte mais ecológicas. Considere:\r\n"
                 + "\r\n"
-                + "Usar a bicicleta ou caminhar para trajetos curtos.\r\n"
-                + "Fazer manutenção regular no seu veículo.\r\n"
-                + "Planejar trajetos para reduzir o uso do carro.\"");
+                + "• Usar a bicicleta ou caminhar para trajetos curtos.\r\n"
+                + "• Fazer manutenção regular no seu veículo.\r\n"
+                + "• Planejar trajetos para reduzir o uso do carro.");
 
         quiz.setResultTextC("Você pode melhorar significativamente suas práticas de transporte para serem mais ecológicas. Sugestões:\r\n"
                 + "\r\n"
-                + "Usar transporte público mais frequentemente.\r\n"
-                + "Considerar veículos elétricos ou híbridos.\r\n"
-                + "Combinar trajetos para otimizar o uso do carro.\"");
+                + "• Usar transporte público mais frequentemente.\r\n"
+                + "• Considerar veículos elétricos ou híbridos.\r\n"
+                + "• Combinar trajetos para otimizar o uso do carro.");
 
         return quiz;
     }
@@ -827,6 +944,31 @@ public class DummyQuizes {
         question5.setId(5);
         question5.setDescription("O que você faz com os resíduos orgânicos?");
         question5.setOptions(optionsQ5);
+        
+        Option option1Q6 = new Option();
+        option1Q6.setId(16);
+        option1Q6.setDescription("Evito comprar alimentos que vão vencer em breve.");
+        option1Q6.setType("A");
+
+        Option option2Q6 = new Option();
+        option2Q6.setId(17);
+        option2Q6.setDescription("Às vezes acabo comprando alimentos que acabam vencendo.");
+        option2Q6.setType("B");
+
+        Option option3Q6 = new Option();
+        option3Q6.setId(18);
+        option3Q6.setDescription("Às vezes ignoro a data de validade dos alimentos.");
+        option3Q6.setType("C");
+
+        List<Option> optionsQ6 = new ArrayList<>();
+        optionsQ6.add(option1Q6);
+        optionsQ6.add(option2Q6);
+        optionsQ6.add(option3Q6);
+
+        Question question6 = new Question();
+        question6.setId(6);
+        question6.setDescription("Como você lida com a validade dos alimentos ao comprar?");
+        question6.setOptions(optionsQ6);
 
         // Adicionar todas as perguntas à lista de perguntas
         List<Question> questions = new ArrayList<>();
@@ -835,6 +977,7 @@ public class DummyQuizes {
         questions.add(question3);
         questions.add(question4);
         questions.add(question5);
+        questions.add(question6);
 
         // Criar o quiz
         Quiz quiz = new Quiz();
@@ -847,21 +990,25 @@ public class DummyQuizes {
 
         quiz.setResultTextA("Parabéns! Você está adotando práticas excelentes para reduzir o desperdício de alimentos. Continue assim e considere:\r\n"
                 + "\r\n"
-                + "Compartilhar suas dicas com amigos e familiares.\r\n"
-                + "Experimentar novas receitas com sobras de alimentos.\r\n"
-                + "Aprofundar seus conhecimentos sobre compostagem.");
+                + "• Compartilhar suas dicas com amigos e familiares.\r\n"
+                + "• Experimentar novas receitas com sobras de alimentos.\r\n"
+                + "• Aprofundar seus conhecimentos sobre compostagem.\r\n"
+                + "• Participar de bancos de alimentos para doar excedentes.\r\n"
+                + "• Evitar comprar alimentos em excesso que podem vencer antes de serem consumidos.");
 
         quiz.setResultTextB("Você está no caminho certo para reduzir o desperdício de alimentos, mas sempre há espaço para melhorias. Considere:\r\n"
                 + "\r\n"
-                + "Planejar melhor suas compras de alimentos.\r\n"
-                + "Armazenar os alimentos de maneira mais eficiente.\r\n"
-                + "Reutilizar as sobras de alimentos em novas receitas.");
+                + "• Planejar melhor suas compras de alimentos.\r\n"
+                + "• Armazenar os alimentos de maneira mais eficiente.\r\n"
+                + "• Reutilizar as sobras de alimentos em novas receitas.\r\n"
+                + "• Experimentar métodos de conservação de alimentos para prolongar sua vida útil.");
 
         quiz.setResultTextC("Há um grande espaço para melhorar suas práticas e reduzir o desperdício de alimentos. Sugestões:\r\n"
                 + "\r\n"
-                + "Começar a planejar suas refeições semanalmente.\r\n"
-                + "Tentar compostagem para resíduos orgânicos.\r\n"
-                + "Reutilizar sobras de refeições para evitar desperdício.");
+                + "• Começar a planejar suas refeições semanalmente.\r\n"
+                + "• Tentar compostagem para resíduos orgânicos.\r\n"
+                + "• Reutilizar sobras de refeições para evitar desperdício.\r\n"
+                + "• Participar de feiras de troca de alimentos para reduzir o descarte.");
 
         return quiz;
     }
