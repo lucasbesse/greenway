@@ -231,7 +231,7 @@ public class Home extends JFrame {
     }
 
     private void openQuiz(Quiz quiz_reference) {
-        QuizScreen quiz = new QuizScreen(quiz_reference, this); // Cria uma nova instância da tela de registro
+        QuizScreen quiz = new QuizScreen(quiz_reference, this.user); // Cria uma nova instância da tela de registro
         quiz.setVisible(true); 
         dispose();
     }

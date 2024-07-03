@@ -21,20 +21,17 @@ import controllers.QuizController;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.Color;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class QuizScreen extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private Quiz current_quiz;
-    private Home home;
+    private User user;
     private int current_question = 0;
     private ButtonGroup group; // Declaração do ButtonGroup a nível de classe
     private Map<JRadioButton, Option> radioButtonOptionMap; // Mapa para associar JRadioButton a Option
@@ -51,8 +48,7 @@ public class QuizScreen extends JFrame {
                 try {
                     Quiz quiz = new Quiz();
                     User user = new User();
-                    Home home = new Home(user);
-                    QuizScreen frame = new QuizScreen(quiz, home);
+                    QuizScreen frame = new QuizScreen(quiz, user);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -64,9 +60,9 @@ public class QuizScreen extends JFrame {
     /**
      * Create the frame.
      */
-    public QuizScreen(Quiz quiz, Home home) {
+    public QuizScreen(Quiz quiz, User user) {
         this.current_quiz = quiz;
-        this.home = home;
+        this.user = user;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1067, 634);
         contentPane = new JPanel();
@@ -90,14 +86,6 @@ public class QuizScreen extends JFrame {
         	
         	createQuestion(Questions.get(this.current_question));
         }
-        
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                home.refreshData();
-                home.refreshContent();
-            }
-        });
     }
     
     private void createQuestion(Question Question) {
@@ -294,7 +282,7 @@ public class QuizScreen extends JFrame {
         btnNewButton.setBounds(457, 422, 168, 45);
         btnNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-            	backToHomeScreen();
+            	openHomeScreen();
             }
         });
         contentPane.add(btnNewButton);
@@ -302,16 +290,14 @@ public class QuizScreen extends JFrame {
     
     private void concludeQuiz() {
     	QuizController quizController = new QuizController();
-    	User user = home.user;
+    	quizController.saveQuizResult(current_quiz, this.user.getName());
     	
-    	String username = user.getName();
-    	quizController.saveQuizResult(current_quiz, username);
-        this.home.setVisible(true); 
-        dispose();
+    	this.openHomeScreen();
     }
     
-    private void backToHomeScreen() {
-    	this.home.setVisible(true); 
+    private void openHomeScreen() {
+    	Home home = new Home(user); 
+		home.setVisible(true);
         dispose();
     }
 }
