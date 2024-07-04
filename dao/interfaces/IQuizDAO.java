@@ -7,4 +7,5 @@ import models.Quiz;
 public interface IQuizDAO {
 	public boolean saveQuizResult(Quiz quiz, String username);
 	public ArrayList<Quiz> getAnsweredQuizzes(String username);
+	public boolean deleteResultForRemake(int quizId, String username);
 }

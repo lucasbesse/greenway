@@ -45,8 +45,8 @@ public class QuizDAO extends ConnectionDAO implements IQuizDAO {
 		ArrayList<Quiz> answeredQuizzes = new ArrayList<Quiz>();
 		
 		try {
-            String sql = "SELECT id, idTeste, resultado, usuario FROM testes_respondidos WHERE usuario = ?";
-            preparedStatement = connection.prepareStatement(sql);
+            String query = "SELECT id, idTeste, resultado, usuario FROM testes_respondidos WHERE usuario = ?";
+            preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
 
             resultSet = preparedStatement.executeQuery();
@@ -68,4 +68,33 @@ public class QuizDAO extends ConnectionDAO implements IQuizDAO {
 		
 		return answeredQuizzes;
 	}
+	
+	@Override
+	public boolean deleteResultForRemake(int quizId, String username) {
+		PreparedStatement preparedStatement = null;
+		
+		try {
+            String query = "DELETE FROM testes_respondidos WHERE idTeste = ? AND usuario = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, quizId);
+            preparedStatement.setString(2, username);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                System.out.println("Registro removido com sucesso.");
+            } else {
+                System.out.println("Nenhum registro encontrado.");
+                return false;
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            this.closePreparedStatement(preparedStatement);
+        }
+		
+		return true;
+    }
 }

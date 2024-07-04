@@ -115,27 +115,26 @@ public class Home extends JFrame {
         divLike_1.setBackground(Color.RED);
         divLike_1.setBounds(290, 44, 200, 30);
         contentPane.add(divLike_1);
+    	
+    	JLabel lblNewLabel_2 = new JLabel("Pendentes:");
+    	lblNewLabel_2.setBounds(45, 122, 138, 13);
+    	Font font_3 = new Font(lblNewLabel_2.getFont().getName(), Font.PLAIN, 18);
+    	lblNewLabel_2.setFont(font_3);
+    	contentPane.add(lblNewLabel_2);
 
-        JLabel lblNewLabel_2 = new JLabel("Pendentes:");
-        lblNewLabel_2.setBounds(45, 122, 138, 13);
-        Font font_3 = new Font(lblNewLabel_2.getFont().getName(), Font.PLAIN, 18);
-        lblNewLabel_2.setFont(font_3);
-        contentPane.add(lblNewLabel_2);
-
-        for (int i = 0; i < this.quizzesRealizados.size(); i++) {
-            criarPainelQuizRealizado(i, this.quizzesRealizados.get(i));
-        }
-
-        JLabel lblNewLabel_1 = new JLabel("Realizados:");
-        lblNewLabel_1.setBounds(45, 382, 138, 13);
-        Font font_2 = new Font(lblNewLabel_1.getFont().getName(), Font.PLAIN, 18);
-        lblNewLabel_1.setFont(font_2);
-        contentPane.add(lblNewLabel_1);
-
-        for (int i = 0; i < this.quizzesPendentes.size(); i++) {
-        	System.out.println(i);
-            criarPainelQuizPendente(i, this.quizzesPendentes.get(i));
-        }
+    	for (int i = 0; i < this.quizzesPendentes.size(); i++) {
+    		criarPainelQuizPendente(i, this.quizzesPendentes.get(i));
+    	}
+    	
+    	JLabel lblNewLabel_1 = new JLabel("Realizados:");
+    	lblNewLabel_1.setBounds(45, 382, 138, 13);
+    	Font font_2 = new Font(lblNewLabel_1.getFont().getName(), Font.PLAIN, 18);
+    	lblNewLabel_1.setFont(font_2);
+    	contentPane.add(lblNewLabel_1);
+    	
+    	for (int i = 0; i < this.quizzesRealizados.size(); i++) {
+    		criarPainelQuizRealizado(i, this.quizzesRealizados.get(i));
+    	}
     }
 
     private void criarPainelQuizRealizado(int numero, Quiz quiz) {
@@ -145,21 +144,33 @@ public class Home extends JFrame {
         
         int colunas = 5; // Número de colunas desejado
         int larguraPainel = 267; // Largura do painel
-        int alturaPainel = 158; // Altura do painel
+        int alturaPainel = 190; // Altura do painel
         int margemX = 25; // Margem horizontal entre os painéis
         int margemY = 20; // Margem vertical entre os painéis
         int y = margemY + (numero / colunas) * (alturaPainel + margemY) + 400;
         
         int x = margemX + (numero % colunas) * (larguraPainel + margemX);
 
-        panel.setBounds(x, y, 267, 158);
+        panel.setBounds(x, y, larguraPainel, alturaPainel);
         panel.setBackground(new Color(205, 205, 252));
         contentPane.add(panel);
+        
+        JButton btnRemakeTest = new JButton("Refazer Teste");
+        btnRemakeTest.setForeground(new Color(0, 0, 0));
+        btnRemakeTest.setBackground(new Color(243, 243, 255));
+        btnRemakeTest.setBounds(38, 122, 192, 26);
+        btnRemakeTest.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Define o cursor como de mão
+        btnRemakeTest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                remakeTest(quiz.getId());
+            }
+        });
+        panel.add(btnRemakeTest);
 
         JButton btnNewButton = new JButton("Ver Resultado");
         btnNewButton.setForeground(new Color(0, 0, 0));
         btnNewButton.setBackground(new Color(243, 243, 255));
-        btnNewButton.setBounds(38, 122, 192, 26);
+        btnNewButton.setBounds(38, 152, 192, 26);
         btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); // Define o cursor como de mão
         btnNewButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -242,6 +253,16 @@ public class Home extends JFrame {
     	return quizzes;
     }
     
+    private void remakeTest(int quizId) {
+    	QuizController quizController = new QuizController();
+    	quizController.deleteResultForRemake(quizId, this.user.getName());
+    	
+    	Quiz newQuiz = DummyQuizes.createQuiz(quizId);
+    	QuizScreen quizScreen = new QuizScreen(newQuiz, this.user); // Cria uma nova instância da tela de registro
+    	quizScreen.setVisible(true); 
+        dispose();
+    }
+    
     private ArrayList<Quiz> filterPendingQuizzes(ArrayList<Quiz> pendingQuizzes, ArrayList<Quiz> answeredQuizzes) {
     	ArrayList<Quiz> newPengindQuizzes = new ArrayList<Quiz>();
     	
@@ -258,10 +279,10 @@ public class Home extends JFrame {
 	        				answeredQuiz.setResultTextA(pendingQuiz.getResultText("A"));
 	        				break;
 	        			case "B": 
-	        				answeredQuiz.setResultTextA(pendingQuiz.getResultText("B"));
+	        				answeredQuiz.setResultTextB(pendingQuiz.getResultText("B"));
 	        				break;
 	        			case "C": 
-	        				answeredQuiz.setResultTextA(pendingQuiz.getResultText("C"));
+	        				answeredQuiz.setResultTextC(pendingQuiz.getResultText("C"));
 	        				break;
         			}
         			
