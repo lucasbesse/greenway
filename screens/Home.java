@@ -101,7 +101,7 @@ public class Home extends JFrame {
     
     public void refreshContent() {
         JLabel divLike = new JLabel(this.quizzesRealizados.size() + " Quizes finalizados", SwingConstants.CENTER);
-        divLike.setBounds(510, 44, 200, 30); // Ajuste as coordenadas e o tamanho conforme necessário
+        divLike.setBounds(510, 44, 200, 30);
         divLike.setBackground(Color.BLUE); // Define a cor de fundo como azul
         divLike.setForeground(Color.WHITE); // Define a cor do texto como branco
         divLike.setOpaque(true); // Necessário para tornar o fundo visível
