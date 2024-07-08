@@ -27,7 +27,7 @@ public class AdminScreen extends JFrame {
         mainPanel.setBackground(new Color(235, 235, 235));
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.insets = new Insets(30, 10, 0, 10);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 4; // Para o título ocupar a largura total das 4 colunas
