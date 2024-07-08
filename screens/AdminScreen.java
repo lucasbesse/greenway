@@ -1,22 +1,18 @@
 package screens;
 
 import javax.swing.*;
-
 import controllers.QuizController;
 import controllers.UserController;
 import dao.UserDAO;
-
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
-
-import models.Quiz;
-import models.User; // Importe corretamente models.User
+import java.util.Map;
+import models.User;
 
 public class AdminScreen extends JFrame {
-	public User user;
+    public User user;
 
-    public AdminScreen(List<User> users) {
+    public AdminScreen(List<User> users, Map<String, Integer> userQuizCounts) {
         setTitle("Administração - Greenway");
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +43,7 @@ public class AdminScreen extends JFrame {
 
         for (int i = 0; i < users.size(); i++) {
             User user = users.get(i);
-            JPanel userCard = createUserCard(user);
+            JPanel userCard = createUserCard(user, userQuizCounts.getOrDefault(user.getName(), 0));
             mainPanel.add(userCard, gbc);
 
             gbc.gridx++;
@@ -64,7 +60,7 @@ public class AdminScreen extends JFrame {
         add(scrollPane);
     }
 
-    private JPanel createUserCard(User user) {
+    private JPanel createUserCard(User user, int quizCount) {
         JPanel card = new JPanel();
         card.setPreferredSize(new Dimension(250, 150));
         card.setBackground(Color.WHITE);
@@ -76,7 +72,7 @@ public class AdminScreen extends JFrame {
         nameLabel.setFont(new Font("Arial", Font.BOLD, 16));
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel quizCountLabel = new JLabel("5" + " Quizzes realizados");
+        JLabel quizCountLabel = new JLabel(quizCount + " Quizzes realizados");
         quizCountLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         quizCountLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -88,7 +84,7 @@ public class AdminScreen extends JFrame {
         dashboardButton.setForeground(Color.WHITE);
         dashboardButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         dashboardButton.addActionListener(e -> {
-        	loginAsUser(user.getName(), "senha_do_usuario");
+            loginAsUser(user.getName(), "senha_do_usuario");
         });
 
         card.add(Box.createVerticalStrut(20));
@@ -106,25 +102,28 @@ public class AdminScreen extends JFrame {
         UserDAO userDAO = new UserDAO();
         List<User> users = userDAO.getAllUsers(); // Obtém a lista de usuários do DAO
 
+        QuizController quizController = new QuizController();
+        Map<String, Integer> userQuizCounts = quizController.getAllUserQuizCounts();
+
         SwingUtilities.invokeLater(() -> {
-            new AdminScreen(users).setVisible(true);
+            new AdminScreen(users, userQuizCounts).setVisible(true);
         });
     }
-    
+
     private void loginAsUser(String name, String adminPassword) {
         // Realiza a autenticação do usuário
         UserDAO userDAO = new UserDAO();
         String userPassword = userDAO.getPassword(name);
-        
+
         if (userPassword != null) {
             UserController userController = new UserController();
             User user = userController.authenticate(name, userPassword);
-            
+
             if (user != null) {
                 // Se o login for bem-sucedido, abrir a tela principal e remover a mensagem
                 this.openHomeScreen(user);
                 // Fecha a mensagem inicial após abrir a tela principal
-                JOptionPane.getRootFrame().dispose(); 
+                JOptionPane.getRootFrame().dispose();
             } else {
                 // Exibe mensagem de falha de login
                 JOptionPane.showMessageDialog(this, "Falha ao realizar login. Usuário ou senha inválidos.");
@@ -136,14 +135,8 @@ public class AdminScreen extends JFrame {
     }
 
     private void openHomeScreen(User user) {
-		Home home = new Home(user); 
-		home.setVisible(true);
-		dispose();
-	}
-    
-    private int getAnsweredQuizzesSize(String name) {
-    	QuizController quizController = new QuizController();
-    	ArrayList<Quiz> quizzes = quizController.getAnsweredQuizzes(name);
-    	return quizzes.size();
+        Home home = new Home(user);
+        home.setVisible(true);
+        dispose();
     }
 }

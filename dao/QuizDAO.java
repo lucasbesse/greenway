@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import dao.interfaces.IQuizDAO;
 import models.Quiz;
@@ -31,7 +33,7 @@ public class QuizDAO extends ConnectionDAO implements IQuizDAO {
 			return false;
 		}
 		finally {
-			this.closeStatement(statement);
+			
 		}
 		
 		return true;
@@ -96,5 +98,30 @@ public class QuizDAO extends ConnectionDAO implements IQuizDAO {
         }
 		
 		return true;
+    }
+	
+	public Map<String, Integer> getAllUserQuizCounts() {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        Map<String, Integer> userQuizCounts = new HashMap<>();
+
+        try {
+            String query = "SELECT usuario, COUNT(*) as quiz_count FROM testes_respondidos GROUP BY usuario";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String username = resultSet.getString("usuario");
+                int quizCount = resultSet.getInt("quiz_count");
+                userQuizCounts.put(username, quizCount);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            this.closePreparedStatement(preparedStatement);
+            this.closeResultSet(resultSet);
+        }
+
+        return userQuizCounts;
     }
 }

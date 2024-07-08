@@ -3,6 +3,7 @@ package controllers;
 import dao.QuizDAO;
 import models.Quiz;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class QuizController {
 	private QuizDAO quizDAO;
@@ -22,4 +23,8 @@ public class QuizController {
 	public boolean deleteResultForRemake(int quizId, String username) {
 		return this.quizDAO.deleteResultForRemake(quizId, username);
 	}
+	
+	public Map<String, Integer> getAllUserQuizCounts() {
+        return quizDAO.getAllUserQuizCounts();
+    }
 }

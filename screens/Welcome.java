@@ -8,9 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class welcome extends JFrame {
+public class Welcome extends JFrame {
 
-    public welcome() {
+    public Welcome() {
         // Configurar a janela principal
         setTitle("Greenway");
         setSize(1100, 650); // Aumentar o tamanho da tela
@@ -114,7 +114,7 @@ public class welcome extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new welcome().setVisible(true);
+                new Welcome().setVisible(true);
             }
         });
     }
