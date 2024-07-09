@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,14 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.interfaces.IUserDAO;
-import database.DatabaseConnection;
 import models.User;
 
 public class UserDAO extends ConnectionDAO implements IUserDAO {
 	
     public UserDAO() {
-//    	DatabaseConnection dbConnection = new DatabaseConnection();
-//    	this.connection = dbConnection.getConnection();
     }
 
 	@Override
@@ -84,6 +80,7 @@ public class UserDAO extends ConnectionDAO implements IUserDAO {
 	}
 	
 	// Método para recuperar todos os usuários registrados
+	@Override
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -111,6 +108,7 @@ public class UserDAO extends ConnectionDAO implements IUserDAO {
         return users;
     }
     
+	@Override
     public String getPassword(String name) {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;

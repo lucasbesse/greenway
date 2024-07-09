@@ -99,8 +99,8 @@ public class AdminScreen extends JFrame {
     }
 
     public static void main(String[] args) {
-        UserDAO userDAO = new UserDAO();
-        List<User> users = userDAO.getAllUsers(); // Obtém a lista de usuários do DAO
+    	UserController userController = new UserController();
+        List<User> users = userController.getAllUsers(); // Obtém a lista de usuários do DAO
 
         QuizController quizController = new QuizController();
         Map<String, Integer> userQuizCounts = quizController.getAllUserQuizCounts();
@@ -112,11 +112,10 @@ public class AdminScreen extends JFrame {
 
     private void loginAsUser(String name, String adminPassword) {
         // Realiza a autenticação do usuário
-        UserDAO userDAO = new UserDAO();
-        String userPassword = userDAO.getPassword(name);
+    	UserController userController = new UserController();
+        String userPassword = userController.getPassword(name);
 
         if (userPassword != null) {
-            UserController userController = new UserController();
             User user = userController.authenticate(name, userPassword);
 
             if (user != null) {

@@ -172,8 +172,8 @@ public class Login extends JFrame {
     }
 
     private void openAdminScreen() {
-        UserDAO userDAO = new UserDAO();
-        List<User> users = userDAO.getAllUsers();
+    	UserController userController = new UserController();
+        List<User> users = userController.getAllUsers();
         QuizController quizController = new QuizController();
         Map<String, Integer> userQuizCounts = quizController.getAllUserQuizCounts();
 

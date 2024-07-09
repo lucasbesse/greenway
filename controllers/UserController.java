@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import dao.UserDAO;
 import models.User;
 
@@ -16,5 +18,13 @@ public class UserController {
 	
 	public User authenticate(String name, String password) {
 		return this.userDAO.authenticate(name, password);
+	}
+	
+	public List<User> getAllUsers() {
+		return this.userDAO.getAllUsers();
+	}
+	
+	public String getPassword(String name) {
+		return this.userDAO.getPassword(name);
 	}
 }
