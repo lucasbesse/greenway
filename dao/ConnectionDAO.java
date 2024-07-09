@@ -14,8 +14,8 @@ public class ConnectionDAO implements IConnectionDAO {
 	protected Connection connection;
 	
 	public ConnectionDAO() {
-		DatabaseConnection dbConnection = new DatabaseConnection();
-    	this.connection = dbConnection.getConnection();
+		DatabaseConnection dbConnection = DatabaseConnection.getInstance();
+		this.connection = dbConnection.getConnection();
 	}
 
 	@Override

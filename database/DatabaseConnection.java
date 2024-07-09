@@ -10,7 +10,9 @@ public class DatabaseConnection {
     
     private Connection connection;
     
-    public DatabaseConnection() {
+    private static DatabaseConnection uniqueInstance;
+    
+    private DatabaseConnection() {
     	try {
     		this.createConnection();  		
     	}
@@ -18,6 +20,14 @@ public class DatabaseConnection {
     		e.printStackTrace();
     	}
     }
+    
+    public static synchronized DatabaseConnection getInstance() {
+		if (uniqueInstance == null) {			
+			uniqueInstance = new DatabaseConnection();
+		}
+
+		return uniqueInstance;
+	}
     
     private void createConnection() throws SQLException {
     	try {
