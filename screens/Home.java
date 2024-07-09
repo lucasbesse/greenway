@@ -63,10 +63,10 @@ public class Home extends JFrame {
         contentPane.setBackground(new Color(245, 245, 255));
 
         JLabel lblNewLabel = new JLabel(this.user.getName());
-        lblNewLabel.setBounds(120, 39, 210, 34);
+        lblNewLabel.setBounds(80, 39, 210, 34);
         lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
         Font font_1 = new Font(lblNewLabel.getFont().getName(), Font.PLAIN, 18);
-        lblNewLabel.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 18));
+        lblNewLabel.setFont(new Font("Microsoft YaHei UI Light", Font.BOLD, 19));
         contentPane.add(lblNewLabel);
         
         this.refreshData();
